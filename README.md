@@ -52,7 +52,7 @@ Weather-Vista welcomes contributions! To get started:
 
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the Creative Commons Zero v1.0 Universal.
 
 ## Acknowledgements
 Special thanks to OpenWeatherMap for providing the weather API.
