@@ -1,4 +1,7 @@
 import requests
+from db_connect import get_db_connection
+from pymongo.errors import PyMongoError
+
 
 def get_weather_from_api(city_name):
     api_key = "eb253155ca7e078cc3180d8356c7ce59"
@@ -33,8 +36,27 @@ def get_weather_from_api(city_name):
         print(f"Humidity (in percentage) = {humidity}%")
         print(f"Wind Speed = {wind_speed} m/s")
         print(f"Weather description = {weather_description}")
+
+        insert_weather_data(city_name, { "temperature": temperature, "pressure": pressure, "humidity": humidity, "wind_speed": wind_speed, "weather_description": weather_description})
+
     else:
         print(f"{city_name} Not Found")
+
+
+    def insert_weather_data(city_name, weather_data):
+        try:
+            collection = get_db_connection()      
+            existing_city = collection.find_one({"city_name": city_name})
+            
+            if existing_city:                
+                collection.update_one({"city_name": city_name}, {"$set": {"weather_data": weather_data}})
+                print(f"Weather data for {city_name} updated in the database.")
+            else:                
+                collection.insert_one({"city_name": city_name, "weather_data": weather_data})
+                print(f"Weather data for {city_name} inserted into the database.")
+
+        except PyMongoError as pe:
+            print(f'PyMongo error: {pe}')
 
 # Example 
 get_weather_from_api("Amsterdam")
