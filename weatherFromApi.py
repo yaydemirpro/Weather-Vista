@@ -1,14 +1,11 @@
 import requests
-from db_connect import get_db_connection
+from db_connect import get_db_connection, get_complete_url
 from pymongo.errors import PyMongoError
 
 
 def get_weather_from_api(city_name):
-    api_key = "eb253155ca7e078cc3180d8356c7ce59"
-    base_url = "http://api.openweathermap.org/data/2.5/weather?"
     
-    complete_url = f"{base_url}q={city_name}&appid={api_key}&units=metric"
-    
+    complete_url = get_complete_url(city_name)    
     response = requests.get(complete_url)
     weather_data = response.json()
 
