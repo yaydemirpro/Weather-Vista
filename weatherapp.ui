@@ -131,10 +131,7 @@ border-radius: 25px;
 color: rgb(252, 191, 130);</string>
           </property>
           <property name="text">
-           <string>icon</string>
-          </property>
-          <property name="pixmap">
-           <pixmap>:/weather/icons/weather/png/030-weather app.png</pixmap>
+           <string/>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -239,10 +236,7 @@ border-radius: 25px;
 color: rgb(252, 191, 130);</string>
           </property>
           <property name="text">
-           <string>icon</string>
-          </property>
-          <property name="pixmap">
-           <pixmap>:/weather/icons/weather/png/030-weather app.png</pixmap>
+           <string/>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -321,10 +315,7 @@ border-radius: 25px;
 color: rgb(252, 191, 130);</string>
           </property>
           <property name="text">
-           <string>icon</string>
-          </property>
-          <property name="pixmap">
-           <pixmap>:/weather/icons/weather/png/030-weather app.png</pixmap>
+           <string/>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -429,10 +420,7 @@ border-radius: 25px;
 color: rgb(252, 191, 130);</string>
           </property>
           <property name="text">
-           <string>icon</string>
-          </property>
-          <property name="pixmap">
-           <pixmap>:/weather/icons/weather/png/030-weather app.png</pixmap>
+           <string/>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -584,10 +572,7 @@ border-radius: 25px;
 color: rgb(252, 191, 130);</string>
           </property>
           <property name="text">
-           <string>icon</string>
-          </property>
-          <property name="pixmap">
-           <pixmap>:/weather/icons/weather/png/030-weather app.png</pixmap>
+           <string/>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -666,10 +651,7 @@ border-radius: 25px;
 color: rgb(252, 191, 130);</string>
           </property>
           <property name="text">
-           <string>icon</string>
-          </property>
-          <property name="pixmap">
-           <pixmap>:/weather/icons/weather/png/030-weather app.png</pixmap>
+           <string/>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -800,10 +782,7 @@ border-radius: 25px;
 color: rgb(252, 191, 130);</string>
           </property>
           <property name="text">
-           <string>icon</string>
-          </property>
-          <property name="pixmap">
-           <pixmap>:/weather/icons/weather/png/030-weather app.png</pixmap>
+           <string/>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -938,10 +917,7 @@ color: rgb(252, 191, 130);</string>
 background: none;</string>
              </property>
              <property name="text">
-              <string>icon</string>
-             </property>
-             <property name="pixmap">
-              <pixmap>:/weather/icons/weather/png/027-location.png</pixmap>
+              <string/>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -972,7 +948,7 @@ color: rgb(252, 191, 130);</string>
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>../../Downloads/hot.png</pixmap>
+           <pixmap>icons/hot.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -1053,7 +1029,7 @@ color: rgb(252, 191, 130);</string>
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>../../Downloads/thermometer.png</pixmap>
+              <pixmap>icons/thermometer.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -1083,7 +1059,7 @@ color: rgb(252, 191, 130);</string>
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>../../Downloads/wind.png</pixmap>
+              <pixmap>icons/wind.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -1148,7 +1124,7 @@ color: rgb(252, 191, 130);</string>
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>../../Downloads/weather.png</pixmap>
+              <pixmap>icons/humidty.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>

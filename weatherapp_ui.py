@@ -81,7 +81,6 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 25px;\n"
 "color: rgb(252, 191, 130);")
-        self.forecast_icon_3hours.setPixmap(QPixmap(u":/weather/icons/weather/png/030-weather app.png"))
         self.forecast_icon_3hours.setScaledContents(True)
 
         self.gridLayout_57.addWidget(self.forecast_icon_3hours, 1, 0, 1, 1)
@@ -132,7 +131,6 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 25px;\n"
 "color: rgb(252, 191, 130);")
-        self.forecast_icon_6hours.setPixmap(QPixmap(u":/weather/icons/weather/png/030-weather app.png"))
         self.forecast_icon_6hours.setScaledContents(True)
 
         self.gridLayout_58.addWidget(self.forecast_icon_6hours, 1, 0, 1, 1)
@@ -171,7 +169,6 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 25px;\n"
 "color: rgb(252, 191, 130);")
-        self.forecast_icon_9hours.setPixmap(QPixmap(u":/weather/icons/weather/png/030-weather app.png"))
         self.forecast_icon_9hours.setScaledContents(True)
 
         self.gridLayout_59.addWidget(self.forecast_icon_9hours, 1, 0, 1, 1)
@@ -219,7 +216,6 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 25px;\n"
 "color: rgb(252, 191, 130);")
-        self.forecast_icon_12hours.setPixmap(QPixmap(u":/weather/icons/weather/png/030-weather app.png"))
         self.forecast_icon_12hours.setScaledContents(True)
 
         self.gridLayout_60.addWidget(self.forecast_icon_12hours, 1, 0, 1, 1)
@@ -284,7 +280,6 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 25px;\n"
 "color: rgb(252, 191, 130);")
-        self.forecast_icon_tomorrow.setPixmap(QPixmap(u":/weather/icons/weather/png/030-weather app.png"))
         self.forecast_icon_tomorrow.setScaledContents(True)
 
         self.gridLayout_61.addWidget(self.forecast_icon_tomorrow, 1, 0, 1, 1)
@@ -323,7 +318,6 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 25px;\n"
 "color: rgb(252, 191, 130);")
-        self.forecast_icon_after1.setPixmap(QPixmap(u":/weather/icons/weather/png/030-weather app.png"))
         self.forecast_icon_after1.setScaledContents(True)
 
         self.gridLayout_62.addWidget(self.forecast_icon_after1, 1, 0, 1, 1)
@@ -380,7 +374,6 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 25px;\n"
 "color: rgb(252, 191, 130);")
-        self.forecast_icon_after2.setPixmap(QPixmap(u":/weather/icons/weather/png/030-weather app.png"))
         self.forecast_icon_after2.setScaledContents(True)
 
         self.gridLayout_63.addWidget(self.forecast_icon_after2, 1, 0, 1, 1)
@@ -445,7 +438,6 @@ class Ui_MainWindow(object):
         self.current_weather_icon.setFont(font5)
         self.current_weather_icon.setStyleSheet(u"border: none;\n"
 "background: none;")
-        self.current_weather_icon.setPixmap(QPixmap(u":/weather/icons/weather/png/027-location.png"))
         self.current_weather_icon.setScaledContents(True)
         self.current_weather_icon.setAlignment(Qt.AlignCenter)
 
@@ -461,7 +453,7 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 20px;\n"
 "color: rgb(252, 191, 130);")
-        self.label_51.setPixmap(QPixmap(u"../../Downloads/hot.png"))
+        self.label_51.setPixmap(QPixmap(u"icons/hot.png"))
         self.label_51.setScaledContents(True)
 
         self.horizontalLayout_32.addWidget(self.label_51)
@@ -510,7 +502,7 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 20px;\n"
 "color: rgb(252, 191, 130);")
-        self.label_52.setPixmap(QPixmap(u"../../Downloads/thermometer.png"))
+        self.label_52.setPixmap(QPixmap(u"icons/thermometer.png"))
         self.label_52.setScaledContents(True)
 
         self.gridLayout_65.addWidget(self.label_52, 1, 0, 1, 1)
@@ -525,7 +517,7 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 20px;\n"
 "color: rgb(252, 191, 130);")
-        self.label_50.setPixmap(QPixmap(u"../../Downloads/wind.png"))
+        self.label_50.setPixmap(QPixmap(u"icons/wind.png"))
         self.label_50.setScaledContents(True)
 
         self.gridLayout_65.addWidget(self.label_50, 0, 0, 1, 1)
@@ -558,7 +550,7 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(103, 103, 103);\n"
 "border-radius: 20px;\n"
 "color: rgb(252, 191, 130);")
-        self.label_57.setPixmap(QPixmap(u"../../Downloads/weather.png"))
+        self.label_57.setPixmap(QPixmap(u"icons/humidty.png"))
         self.label_57.setScaledContents(True)
 
         self.gridLayout_65.addWidget(self.label_57, 2, 0, 1, 1)
@@ -697,28 +689,28 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.forecast_temp_3hours.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
-        self.forecast_icon_3hours.setText(QCoreApplication.translate("MainWindow", u"icon", None))
+        self.forecast_icon_3hours.setText("")
         self.forecast_time1_8.setText(QCoreApplication.translate("MainWindow", u"+3 Hours", None))
         self.forecast_temp_6hours.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
-        self.forecast_icon_6hours.setText(QCoreApplication.translate("MainWindow", u"icon", None))
+        self.forecast_icon_6hours.setText("")
         self.forecast_time2_8.setText(QCoreApplication.translate("MainWindow", u"+6 Hours", None))
-        self.forecast_icon_9hours.setText(QCoreApplication.translate("MainWindow", u"icon", None))
+        self.forecast_icon_9hours.setText("")
         self.forecast_time3_12.setText(QCoreApplication.translate("MainWindow", u"+9 Hours", None))
         self.forecast_temp_9hours.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
-        self.forecast_icon_12hours.setText(QCoreApplication.translate("MainWindow", u"icon", None))
+        self.forecast_icon_12hours.setText("")
         self.forecast_temp_12hours.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
         self.forecast_time4_12.setText(QCoreApplication.translate("MainWindow", u"+12 Hours", None))
         self.forecast_temp_tomorrow.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
-        self.forecast_icon_tomorrow.setText(QCoreApplication.translate("MainWindow", u"icon", None))
+        self.forecast_icon_tomorrow.setText("")
         self.label_tomorrow.setText(QCoreApplication.translate("MainWindow", u"Tomorrow", None))
-        self.forecast_icon_after1.setText(QCoreApplication.translate("MainWindow", u"icon", None))
+        self.forecast_icon_after1.setText("")
         self.forecast_temp_after1.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
         self.label1_tomorrow.setText(QCoreApplication.translate("MainWindow", u"After Tomorrow", None))
         self.forecast_temp_after2.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
-        self.forecast_icon_after2.setText(QCoreApplication.translate("MainWindow", u"icon", None))
+        self.forecast_icon_after2.setText("")
         self.label2_tomorrow.setText(QCoreApplication.translate("MainWindow", u"+2 Tomorrow", None))
         self.current_weather.setText(QCoreApplication.translate("MainWindow", u"Current Weather:", None))
-        self.current_weather_icon.setText(QCoreApplication.translate("MainWindow", u"icon", None))
+        self.current_weather_icon.setText("")
         self.label_51.setText("")
         self.temperature_label.setText(QCoreApplication.translate("MainWindow", u"27 C", None))
         self.wind_speed_label.setText(QCoreApplication.translate("MainWindow", u"113 km/h", None))
