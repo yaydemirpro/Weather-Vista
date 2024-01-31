@@ -36,7 +36,7 @@ class Ui_MainWindow(object):
         font = QFont()
         font.setKerning(True)
         self.weather_forecast_frame_9.setFont(font)
-        self.weather_forecast_frame_9.setStyleSheet(u"QFrame{border-top: 2px solid rgb(154, 148, 196)}")
+        self.weather_forecast_frame_9.setStyleSheet(u"")
         self.weather_forecast_frame_9.setFrameShape(QFrame.StyledPanel)
         self.weather_forecast_frame_9.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_30 = QHBoxLayout(self.weather_forecast_frame_9)
@@ -245,7 +245,7 @@ class Ui_MainWindow(object):
         self.weather_forecast_frame_10 = QFrame(self.centralwidget)
         self.weather_forecast_frame_10.setObjectName(u"weather_forecast_frame_10")
         self.weather_forecast_frame_10.setGeometry(QRect(380, 630, 1101, 171))
-        self.weather_forecast_frame_10.setStyleSheet(u"QFrame{border-top: 2px solid rgb(154, 148, 196)}")
+        self.weather_forecast_frame_10.setStyleSheet(u"")
         self.weather_forecast_frame_10.setFrameShape(QFrame.StyledPanel)
         self.weather_forecast_frame_10.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_31 = QHBoxLayout(self.weather_forecast_frame_10)
@@ -392,22 +392,22 @@ class Ui_MainWindow(object):
 
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(379, 170, 1101, 271))
-        self.frame.setStyleSheet(u"QFrame{border-top: 2px solid rgb(154, 148, 196)}")
+        self.frame.setGeometry(QRect(379, 160, 1111, 281))
+        self.frame.setStyleSheet(u"")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_13 = QVBoxLayout(self.frame)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.current_weather = QLabel(self.frame)
-        self.current_weather.setObjectName(u"current_weather")
+        self.current_weather_description = QLabel(self.frame)
+        self.current_weather_description.setObjectName(u"current_weather_description")
         font4 = QFont()
         font4.setFamilies([u"Adobe Garamond Pro Bold"])
         font4.setPointSize(11)
-        self.current_weather.setFont(font4)
-        self.current_weather.setStyleSheet(u"border: none;\n"
-"color: rgb(170, 119, 138);")
+        self.current_weather_description.setFont(font4)
+        self.current_weather_description.setStyleSheet(u"border: none;\n"
+"color: rgb(216, 255, 254);")
 
-        self.verticalLayout_13.addWidget(self.current_weather, 0, Qt.AlignLeft|Qt.AlignTop)
+        self.verticalLayout_13.addWidget(self.current_weather_description)
 
         self.middle_frame = QFrame(self.frame)
         self.middle_frame.setObjectName(u"middle_frame")
@@ -486,11 +486,11 @@ class Ui_MainWindow(object):
         self.wind_speed_label.setObjectName(u"wind_speed_label")
         font7 = QFont()
         font7.setFamilies([u"Sitka Banner"])
-        font7.setPointSize(19)
+        font7.setPointSize(15)
         font7.setBold(False)
         font7.setItalic(False)
         self.wind_speed_label.setFont(font7)
-        self.wind_speed_label.setStyleSheet(u"font: 19pt \"Sitka Banner\";\n"
+        self.wind_speed_label.setStyleSheet(u"font: 15pt \"Sitka Banner\";\n"
 "color: rgb(216, 255, 254);")
 
         self.gridLayout_65.addWidget(self.wind_speed_label, 0, 1, 1, 1)
@@ -524,21 +524,16 @@ class Ui_MainWindow(object):
 
         self.pressure_label = QLabel(self.frame_63)
         self.pressure_label.setObjectName(u"pressure_label")
-        font9 = QFont()
-        font9.setFamilies([u"Sitka Banner"])
-        font9.setPointSize(20)
-        font9.setBold(False)
-        font9.setItalic(False)
-        self.pressure_label.setFont(font9)
-        self.pressure_label.setStyleSheet(u"font: 20pt \"Sitka Banner\";\n"
+        self.pressure_label.setFont(font7)
+        self.pressure_label.setStyleSheet(u"font: 15pt \"Sitka Banner\";\n"
 "color: rgb(216, 255, 254);")
 
         self.gridLayout_65.addWidget(self.pressure_label, 1, 1, 1, 1)
 
         self.pressure_label_3 = QLabel(self.frame_63)
         self.pressure_label_3.setObjectName(u"pressure_label_3")
-        self.pressure_label_3.setFont(font9)
-        self.pressure_label_3.setStyleSheet(u"font: 20pt \"Sitka Banner\";\n"
+        self.pressure_label_3.setFont(font7)
+        self.pressure_label_3.setStyleSheet(u"font: 15pt \"Sitka Banner\";\n"
 "color: rgb(216, 255, 254);")
 
         self.gridLayout_65.addWidget(self.pressure_label_3, 2, 1, 1, 1)
@@ -566,17 +561,17 @@ class Ui_MainWindow(object):
         self.top_frame.setGeometry(QRect(0, 60, 1490, 62))
         self.top_frame.setMinimumSize(QSize(882, 62))
         self.top_frame.setMaximumSize(QSize(16777215, 62))
-        self.top_frame.setStyleSheet(u"border-bottom: 2px solid rgb(154, 148, 196)")
+        self.top_frame.setStyleSheet(u"")
         self.top_frame.setFrameShape(QFrame.StyledPanel)
         self.top_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_66 = QGridLayout(self.top_frame)
         self.gridLayout_66.setObjectName(u"gridLayout_66")
         self.countries_list = QComboBox(self.top_frame)
         self.countries_list.setObjectName(u"countries_list")
-        font10 = QFont()
-        font10.setFamilies([u"Sitka Banner"])
-        font10.setPointSize(14)
-        self.countries_list.setFont(font10)
+        font9 = QFont()
+        font9.setFamilies([u"Sitka Banner"])
+        font9.setPointSize(14)
+        self.countries_list.setFont(font9)
         self.countries_list.setStyleSheet(u"padding: 5px;\n"
 "border: 1px solid rgb(103, 103, 103);\n"
 "border-radius: 10px;\n"
@@ -586,7 +581,7 @@ class Ui_MainWindow(object):
 
         self.label_54 = QLabel(self.top_frame)
         self.label_54.setObjectName(u"label_54")
-        self.label_54.setFont(font10)
+        self.label_54.setFont(font9)
         self.label_54.setStyleSheet(u"padding: 5px;\n"
 "color: rgb(77, 96, 107);\n"
 "border: 1px solid rgb(272, 192, 125);\n"
@@ -596,7 +591,7 @@ class Ui_MainWindow(object):
 
         self.cities_list = QComboBox(self.top_frame)
         self.cities_list.setObjectName(u"cities_list")
-        self.cities_list.setFont(font10)
+        self.cities_list.setFont(font9)
         self.cities_list.setStyleSheet(u"padding: 5px;\n"
 "border: 1px solid rgb(103, 103, 103);\n"
 "border-radius: 10px;\n"
@@ -606,7 +601,7 @@ class Ui_MainWindow(object):
 
         self.label_53 = QLabel(self.top_frame)
         self.label_53.setObjectName(u"label_53")
-        self.label_53.setFont(font10)
+        self.label_53.setFont(font9)
         self.label_53.setStyleSheet(u"padding: 5px;\n"
 "border: 1px solid rgb(272, 192, 125);\n"
 "border-radius: 10px;\n"
@@ -630,24 +625,24 @@ class Ui_MainWindow(object):
 "background-color: rgb(154, 192, 214);")
         self.city_name_label = QLabel(self.centralwidget)
         self.city_name_label.setObjectName(u"city_name_label")
-        self.city_name_label.setGeometry(QRect(0, 130, 1491, 31))
-        font11 = QFont()
-        font11.setFamilies([u"Open Sans Extrabold"])
-        font11.setPointSize(15)
-        font11.setBold(False)
-        self.city_name_label.setFont(font11)
+        self.city_name_label.setGeometry(QRect(40, 130, 1491, 31))
+        font10 = QFont()
+        font10.setFamilies([u"Open Sans Extrabold"])
+        font10.setPointSize(15)
+        font10.setBold(False)
+        self.city_name_label.setFont(font10)
         self.city_name_label.setStyleSheet(u"")
         self.city_name_label.setAlignment(Qt.AlignCenter)
         self.search_city = QLineEdit(self.centralwidget)
         self.search_city.setObjectName(u"search_city")
         self.search_city.setGeometry(QRect(10, 120, 361, 41))
-        self.search_city.setFont(font10)
+        self.search_city.setFont(font9)
         self.search_city.setStyleSheet(u"padding: 5px;\n"
 "border: 1px solid rgb(272, 192, 125);\n"
 "border-radius: 10px;")
         self.region_label = QLabel(self.centralwidget)
         self.region_label.setObjectName(u"region_label")
-        self.region_label.setGeometry(QRect(910, 130, 81, 31))
+        self.region_label.setGeometry(QRect(940, 130, 81, 31))
         self.region_label.setMinimumSize(QSize(0, 30))
         self.region_label.setFont(font3)
         self.region_label.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
@@ -660,11 +655,11 @@ class Ui_MainWindow(object):
         self.label_21 = QLabel(self.centralwidget)
         self.label_21.setObjectName(u"label_21")
         self.label_21.setGeometry(QRect(0, -20, 1491, 91))
-        font12 = QFont()
-        font12.setFamilies([u"Adobe Garamond Pro Bold"])
-        font12.setPointSize(25)
-        font12.setBold(True)
-        self.label_21.setFont(font12)
+        font11 = QFont()
+        font11.setFamilies([u"Adobe Garamond Pro Bold"])
+        font11.setPointSize(25)
+        font11.setBold(True)
+        self.label_21.setFont(font11)
         self.label_21.setStyleSheet(u"border: none;\n"
 "color: rgb(170, 119, 138);\n"
 "background-color: rgb(64, 150, 225);\n"
@@ -709,7 +704,7 @@ class Ui_MainWindow(object):
         self.forecast_temp_after2.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
         self.forecast_icon_after2.setText("")
         self.label2_tomorrow.setText(QCoreApplication.translate("MainWindow", u"+2 Tomorrow", None))
-        self.current_weather.setText(QCoreApplication.translate("MainWindow", u"Current Weather:", None))
+        self.current_weather_description.setText(QCoreApplication.translate("MainWindow", u"Current Weather Descriptions Here", None))
         self.current_weather_icon.setText("")
         self.label_51.setText("")
         self.temperature_label.setText(QCoreApplication.translate("MainWindow", u"27 C", None))

@@ -35,7 +35,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QFrame{border-top: 2px solid rgb(154, 148, 196)}</string>
+     <string notr="true"/>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -494,7 +494,7 @@ color: rgb(170, 119, 138);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QFrame{border-top: 2px solid rgb(154, 148, 196)}</string>
+     <string notr="true"/>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -821,13 +821,13 @@ color: rgb(170, 119, 138);</string>
     <property name="geometry">
      <rect>
       <x>379</x>
-      <y>170</y>
-      <width>1101</width>
-      <height>271</height>
+      <y>160</y>
+      <width>1111</width>
+      <height>281</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QFrame{border-top: 2px solid rgb(154, 148, 196)}</string>
+     <string notr="true"/>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -836,8 +836,8 @@ color: rgb(170, 119, 138);</string>
      <enum>QFrame::Raised</enum>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_13">
-     <item alignment="Qt::AlignLeft|Qt::AlignTop">
-      <widget class="QLabel" name="current_weather">
+     <item>
+      <widget class="QLabel" name="current_weather_description">
        <property name="font">
         <font>
          <family>Adobe Garamond Pro Bold</family>
@@ -846,10 +846,10 @@ color: rgb(170, 119, 138);</string>
        </property>
        <property name="styleSheet">
         <string notr="true">border: none;
-color: rgb(170, 119, 138);</string>
+color: rgb(216, 255, 254);</string>
        </property>
        <property name="text">
-        <string>Current Weather:</string>
+        <string>Current Weather Descriptions Here</string>
        </property>
       </widget>
      </item>
@@ -996,14 +996,14 @@ border-radius: 20px;</string>
              <property name="font">
               <font>
                <family>Sitka Banner</family>
-               <pointsize>19</pointsize>
+               <pointsize>15</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">font: 19pt &quot;Sitka Banner&quot;;
+              <string notr="true">font: 15pt &quot;Sitka Banner&quot;;
 color: rgb(216, 255, 254);</string>
              </property>
              <property name="text">
@@ -1071,14 +1071,14 @@ color: rgb(252, 191, 130);</string>
              <property name="font">
               <font>
                <family>Sitka Banner</family>
-               <pointsize>20</pointsize>
+               <pointsize>15</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">font: 20pt &quot;Sitka Banner&quot;;
+              <string notr="true">font: 15pt &quot;Sitka Banner&quot;;
 color: rgb(216, 255, 254);</string>
              </property>
              <property name="text">
@@ -1091,14 +1091,14 @@ color: rgb(216, 255, 254);</string>
              <property name="font">
               <font>
                <family>Sitka Banner</family>
-               <pointsize>20</pointsize>
+               <pointsize>15</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">font: 20pt &quot;Sitka Banner&quot;;
+              <string notr="true">font: 15pt &quot;Sitka Banner&quot;;
 color: rgb(216, 255, 254);</string>
              </property>
              <property name="text">
@@ -1161,7 +1161,7 @@ color: rgb(252, 191, 130);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-bottom: 2px solid rgb(154, 148, 196)</string>
+     <string notr="true"/>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -1281,7 +1281,7 @@ background-color: rgb(154, 192, 214);</string>
    <widget class="QLabel" name="city_name_label">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>40</x>
       <y>130</y>
       <width>1491</width>
       <height>31</height>
@@ -1332,7 +1332,7 @@ border-radius: 10px;</string>
    <widget class="QLabel" name="region_label">
     <property name="geometry">
      <rect>
-      <x>910</x>
+      <x>940</x>
       <y>130</y>
       <width>81</width>
       <height>31</height>
