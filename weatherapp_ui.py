@@ -726,6 +726,6 @@ class Ui_MainWindow(object):
         self.search_city.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Here \ud83d\udd0e", None))
         self.region_label.setText(QCoreApplication.translate("MainWindow", u"Region", None))
         self.population_label.setText(QCoreApplication.translate("MainWindow", u"Population", None))
-        self.label_21.setText(QCoreApplication.translate("MainWindow", u"Wheather-Vista", None))
+        self.label_21.setText(QCoreApplication.translate("MainWindow", u"Weather-Vista", None))
     # retranslateUi
 

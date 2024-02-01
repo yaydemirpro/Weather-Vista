@@ -25,6 +25,8 @@ def get_weather_from_api(city_name):
         # Description
         weather_info = weather_data["weather"]
         weather_description = weather_info[0]["description"]
+        
+        
 
         # Displaying the information
         print(f"Weather in {city_name}:")
@@ -33,6 +35,7 @@ def get_weather_from_api(city_name):
         print(f"Humidity (in percentage) = {humidity}%")
         print(f"Wind Speed = {wind_speed} m/s")
         print(f"Weather description = {weather_description}")
+
 
         insert_weather_data(city_name, { "temperature": temperature, "pressure": pressure, "humidity": humidity, "wind_speed": wind_speed, "weather_description": weather_description})
 
@@ -57,3 +60,4 @@ def get_weather_from_api(city_name):
 
 # Example 
 get_weather_from_api("Amsterdam")
+
