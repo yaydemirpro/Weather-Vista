@@ -1269,7 +1269,7 @@ background-color: rgb(154, 192, 214);</string>
     </column>
     <column>
      <property name="text">
-      <string>Regions</string>
+      <string>Province</string>
      </property>
     </column>
     <column>
@@ -1329,7 +1329,7 @@ border-radius: 10px;</string>
      <string>Search Here 🔎</string>
     </property>
    </widget>
-   <widget class="QLabel" name="region_label">
+   <widget class="QLabel" name="province_label">
     <property name="geometry">
      <rect>
       <x>940</x>
@@ -1355,7 +1355,7 @@ border-radius: 10px;</string>
 background-color: rgb(154, 192, 214);</string>
     </property>
     <property name="text">
-     <string>Region</string>
+     <string>Province</string>
     </property>
    </widget>
    <widget class="QLabel" name="population_label">
@@ -1422,7 +1422,7 @@ color: rgb(229, 161, 187);</string>
      <x>0</x>
      <y>0</y>
      <width>1490</width>
-     <height>26</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
