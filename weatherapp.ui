@@ -1409,7 +1409,7 @@ background-color: rgb(181, 225, 250);
 color: rgb(229, 161, 187);</string>
     </property>
     <property name="text">
-     <string>Wheather-Vista</string>
+     <string>Weather-Vista</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
