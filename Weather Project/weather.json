@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": 4.8639,
+        "lat": 52.3008
+    },
+    "weather": [
+        {
+            "id": 803,
+            "main": "Clouds",
+            "description": "broken clouds",
+            "icon": "04n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 7.26,
+        "feels_like": 2.64,
+        "temp_min": 6.64,
+        "temp_max": 7.79,
+        "pressure": 1024,
+        "humidity": 77
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 9.77,
+        "deg": 220
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1706724418,
+    "sys": {
+        "type": 2,
+        "id": 47677,
+        "country": "NL",
+        "sunrise": 1706685850,
+        "sunset": 1706718207
+    },
+    "timezone": 3600,
+    "id": 2759798,
+    "name": "Amstelveen",
+    "cod": 200
+}
