@@ -62,27 +62,27 @@ def get_forecast_from_api(city_name):
             icon = item['weather'][0]['icon']
             print('Icon: {}'.format(icon))
             
-            # insert_forecast_data(city_name, { "date":day_date, "time": three_hours, "temperature": temperature, "icon": icon, "description": description})
+            insert_forecast_data(city_name, { "date":day_date, "time": three_hours, "temperature": temperature, "icon": icon, "description": description})
 
     else:
         print(f"{city_name} Not Found")
         #print(forecast_data)
 
 
-# def insert_forecast_data(city_name, forecast_data):
-#         try:
-#             collection = get_db_connection()      
-#             existing_city = collection.find_one({"city_name": city_name})
+def insert_forecast_data(city_name, forecast_data):
+        try:
+            collection = get_db_connection()      
+            existing_city = collection.find_one({"city_name": city_name})
                 
-#             if existing_city:                
-#                 collection.update_one({"city_name": city_name}, {"$set": {"forecast_data": forecast_data}})
-#                 print(f"Weather data for {city_name} updated in the database.")
-#             else:                
-#                 collection.insert_one({"city_name": city_name, "forecast_data": forecast_data})
-#                 print(f"Forecast data for {city_name} inserted into the database.")
+            if existing_city:                
+                collection.update_one({"city_name": city_name}, {"$set": {"forecast_data": forecast_data}})
+                print(f"Weather data for {city_name} updated in the database.")
+            else:                
+                collection.insert_one({"city_name": city_name, "forecast_data": forecast_data})
+                print(f"Forecast data for {city_name} inserted into the database.")
 
-#         except PyMongoError as pe:
-#             print(f'PyMongo error: {pe}')
+        except PyMongoError as pe:
+            print(f'PyMongo error: {pe}')
 
 
 
