@@ -3,8 +3,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QCom
 from PyQt5.QtCore import QSettings
 from PyQt5.QtGui import QPixmap
 from PyQt5.uic import loadUi
-import db_connect
-import db_config
+from db_connect import get_db_connection, get_complete_url
+
 
 
 class WeatherVista(QMainWindow):
@@ -42,7 +42,7 @@ class WeatherVista(QMainWindow):
 
         
     def fill_countries_into_combobox(self):
-        db_connection = db_connect.get_db_connection()    
+        db_connection = get_db_connection()    
         all_documents = db_connection.find()
         
         countries = [country for document in all_documents for country in document.keys() if country != '_id']
@@ -52,7 +52,7 @@ class WeatherVista(QMainWindow):
 
     def fill_cities_into_combobox(self, index):
         selected_country = self.countries_list.itemText(index)
-        db_connection = db_connect.get_db_connection() 
+        db_connection = get_db_connection() 
         document = db_connection.find_one({selected_country: {"$exists": True}})     
         if document:
             self.cities = sorted(document[selected_country], key=lambda x: x["population"], reverse=True)
