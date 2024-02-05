@@ -13,23 +13,26 @@ def get_forecast_from_api(city_name):
         main_info = forecast_data["list"][0]["main"]  # Assuming the first item in the list
         temperature = main_info["temp"]
 
-        current_date = ''
-
-        for item in forecast_data["list"]:
+        
+        forecast_data_to_db = []
+        today = forecast_data["list"][0]['dt_txt'].split(' ')[0]
+        print("today", today)
+        
+        for x in range(0, 4):
+            item = forecast_data["list"][x]
             # Time of the weather data received, partitioned into 3-hour blocks
             time = item['dt_txt']
 
             # Split the time into date and hour [2018-04-15 06:00:00]
-            next_date, hour = time.split(' ')
+            current_date, hour = time.split(' ')
 
             # Stores the current date and prints it once
-            if current_date != next_date:
-                current_date = next_date
-                year, month, day = current_date.split('-')
-                date = {'y': year, 'm': month, 'd': day}
-                day_date = ('\n{m}/{d}/{y}'.format(**date))
-                
-                print(day_date)
+            
+            year, month, day = current_date.split('-')
+            date = {'y': year, 'm': month, 'd': day}
+            day_date = ('{m}/{d}/{y}'.format(**date))
+            
+            print(current_date)
 
             # Grabs the first 2 integers from our HH:MM:SS string to get the hours
             hour = int(hour[:2])
@@ -45,48 +48,121 @@ def get_forecast_from_api(city_name):
                 meridiem = 'PM'
 
             # Prints the hours [HH:MM AM/PM]
-            three_hours =('\n%i:00 %s' % (hour, meridiem))
+            three_hours =('%i:00 %s' % (hour, meridiem))
             print(three_hours)
 
             # Temperature is measured in Kelvin
-            temperature = item['main']['temp']
+            temperature = int(item['main']['temp'] - 273.15)
+            # temperature = (int(temperature - 273.15))
 
             # Weather condition
             description = item['weather'][0]['description']
 
             # Prints the description as well as the temperature in Celsius and Fahrenheit
             print('Weather condition: %s' % description)
-            print('Celsius: {} °C'.format(int(temperature - 273.15)))
+            print(f'Celsius: {temperature} °C')
 
             # Additional weather information
             icon = item['weather'][0]['icon']
             print('Icon: {}'.format(icon))
-            
-            # insert_forecast_data(city_name, { "date":day_date, "time": three_hours, "temperature": temperature, "icon": icon, "description": description})
+            forecast_data_to_db.append({ "date":day_date, "time": three_hours, "temperature": temperature, "icon": icon, "description": description})
+        
+        insert_forecast_data(city_name, forecast_data_to_db)
 
     else:
         print(f"{city_name} Not Found")
         #print(forecast_data)
+    
+    get_daily_forecast_from_api(city_name, forecast_data)
+    
+####################################################################################################
+def get_daily_forecast_from_api(city_name, daily_forecast_data):
 
+    if daily_forecast_data["cod"] == "200":
+        # Extracting relevant information from the JSON response
+        main_info = daily_forecast_data["list"][0]["main"]  # Assuming the first item in the list
+        temperature = main_info["temp"]
 
-# def insert_forecast_data(city_name, forecast_data):
-#         try:
-#             collection = get_db_connection()      
-#             existing_city = collection.find_one({"city_name": city_name})
+        daily_forecast_data_db = []
+        today = daily_forecast_data["list"][0]['dt_txt'].split(' ')[0]
+
+        for item in daily_forecast_data["list"]:
+            # Time of the weather data received, partitioned into 3-hour blocks
+            time = item['dt_txt']
+
+            # Split the time into date and hour [2018-04-15 06:00:00]
+            next_date, hour = time.split(' ')
+
+            # Stores the current date and prints it once
+            if today != next_date:
+                today = next_date
+                year, month, day = today.split('-')
+                date = {'y': year, 'm': month, 'd': day}
+                day_date = ('{m}/{d}/{y}'.format(**date))
                 
-#             if existing_city:                
-#                 collection.update_one({"city_name": city_name}, {"$set": {"forecast_data": forecast_data}})
-#                 print(f"Weather data for {city_name} updated in the database.")
-#             else:                
-#                 collection.insert_one({"city_name": city_name, "forecast_data": forecast_data})
-#                 print(f"Forecast data for {city_name} inserted into the database.")
+                temperature = int(item['main']['temp']- 273.15)
 
-#         except PyMongoError as pe:
-#             print(f'PyMongo error: {pe}')
+                # Weather condition
+                description = item['weather'][0]['description']
+                print(day_date)
+
+                # Prints the description as well as the temperature in Celsius and Fahrenheit
+                print('Weather condition: %s' % description)
+                print(f'Celsius: {temperature} °C')
+
+                # Additional weather information
+                icon = item['weather'][0]['icon']
+                print('Icon: {}'.format(icon))
+                
+
+
+                daily_forecast_data_db.append({"date" : day_date, "temparature": temperature, "description" : description,"icon": icon})
+                
+        
+        insert_daily_forecast_data(city_name, daily_forecast_data_db)
+        #print(daily_forecast_data_db)
+
+    else:
+        print(f"{city_name} Not Found")
+        
+        #print(forecast_data)
+####################################################################################################
+def insert_daily_forecast_data(city_name, daily_forecast_data):
+        try:
+            collection = get_db_connection()      
+            existing_city = collection.find_one({"city_name": city_name})
+                
+            if existing_city:                
+                collection.update_one({"city_name": city_name}, {"$set": {"daily_forecast_data": daily_forecast_data}})
+                print(f"Daily Forecast data for {city_name} updated in the database.")
+            else:                
+                collection.insert_one({"city_name": city_name, "daily_forecast_data": daily_forecast_data})
+                print(f"Daily Forecast data for {city_name} inserted into the database.")
+
+        except PyMongoError as pe:
+            print(f'PyMongo error: {pe}')
+
+
+
+####################################################################################################
+def insert_forecast_data(city_name, forecast_data):
+        try:
+            collection = get_db_connection()      
+            existing_city = collection.find_one({"city_name": city_name})
+                
+            if existing_city:                
+                collection.update_one({"city_name": city_name}, {"$set": {"forecast_data": forecast_data}})
+                print(f"Forecast data for {city_name} updated in the database.")
+            else:                
+                collection.insert_one({"city_name": city_name, "forecast_data": forecast_data})
+                print(f"Forecast data for {city_name} inserted into the database.")
+
+        except PyMongoError as pe:
+            print(f'PyMongo error: {pe}')
 
 
 
 
 
-get_forecast_from_api("Amsterdam")
+get_forecast_from_api("Groningen")
 
