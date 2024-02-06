@@ -152,7 +152,7 @@ class WeatherVista(QMainWindow):
 
     def populate_table_widget(self, cities):
         self.tableWidget.setRowCount(len(cities))
-        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setColumnCount(3)
         headers = ["City Name", "Province", "Population"]
         self.tableWidget.setHorizontalHeaderLabels(headers)
 
