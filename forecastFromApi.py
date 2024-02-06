@@ -2,7 +2,7 @@ import requests
 from db_connect import get_db_connection, get_forecast_url
 from pymongo.errors import PyMongoError
 
-def get_forecast_from_api(city_name):
+def get_forecast_from_api(country_name, city_name):
     
     forecast_url = get_forecast_url(city_name)    
     apicall = requests.get(forecast_url)
@@ -67,16 +67,16 @@ def get_forecast_from_api(city_name):
             print('Icon: {}'.format(icon))
             forecast_data_to_db.append({ "date":day_date, "time": three_hours, "temperature": temperature, "icon": icon, "description": description})
         
-        insert_forecast_data(city_name, forecast_data_to_db)
+        insert_forecast_data(country_name, city_name, forecast_data_to_db)
 
     else:
         print(f"{city_name} Not Found")
         #print(forecast_data)
     
-    get_daily_forecast_from_api(city_name, forecast_data)
+    get_daily_forecast_from_api(country_name, city_name, forecast_data)
     
 ####################################################################################################
-def get_daily_forecast_from_api(city_name, daily_forecast_data):
+def get_daily_forecast_from_api(country_name, city_name, daily_forecast_data):
 
     if daily_forecast_data["cod"] == "200":
         # Extracting relevant information from the JSON response
@@ -119,50 +119,46 @@ def get_daily_forecast_from_api(city_name, daily_forecast_data):
                 daily_forecast_data_db.append({"date" : day_date, "temparature": temperature, "description" : description,"icon": icon})
                 
         
-        insert_daily_forecast_data(city_name, daily_forecast_data_db)
-        #print(daily_forecast_data_db)
+        insert_daily_forecast_data(country_name, city_name, daily_forecast_data_db)
 
     else:
         print(f"{city_name} Not Found")
         
-        #print(forecast_data)
-####################################################################################################
-def insert_daily_forecast_data(city_name, daily_forecast_data):
-        try:
-            collection = get_db_connection()      
-            existing_city = collection.find_one({"city_name": city_name})
-                
-            if existing_city:                
-                collection.update_one({"city_name": city_name}, {"$set": {"daily_forecast_data": daily_forecast_data}})
-                print(f"Daily Forecast data for {city_name} updated in the database.")
-            else:                
-                collection.insert_one({"city_name": city_name, "daily_forecast_data": daily_forecast_data})
-                print(f"Daily Forecast data for {city_name} inserted into the database.")
+def insert_daily_forecast_data(country_name, city_name, daily_forecast_data):
+    collection = get_db_connection()
 
-        except PyMongoError as pe:
-            print(f'PyMongo error: {pe}')
+    query = {f"{country_name}.city": city_name}
+    update = {
+        "$set": {
+            f"{country_name}.$[elem].forecast": daily_forecast_data
+        }
+    }
+    array_filters = [{"elem.city": city_name}]
 
+    try:
 
-
-####################################################################################################
-def insert_forecast_data(city_name, forecast_data):
-        try:
-            collection = get_db_connection()      
-            existing_city = collection.find_one({"city_name": city_name})
-                
-            if existing_city:                
-                collection.update_one({"city_name": city_name}, {"$set": {"forecast_data": forecast_data}})
-                print(f"Forecast data for {city_name} updated in the database.")
-            else:                
-                collection.insert_one({"city_name": city_name, "forecast_data": forecast_data})
-                print(f"Forecast data for {city_name} inserted into the database.")
-
-        except PyMongoError as pe:
-            print(f'PyMongo error: {pe}')
+        collection.update_one({}, update, array_filters=array_filters)
+        print(f"Forecast data for {city_name}, {country_name} inserted successfully.")
+    except PyMongoError as pe:
+        print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
 
 
+def insert_forecast_data(country_name, city_name, forecast_data):
+    collection = get_db_connection()
 
+    query = {f"{country_name}.city": city_name}
+    update = {
+        "$set": {
+            f"{country_name}.$[elem].forecast": forecast_data
+        }
+    }
+    array_filters = [{"elem.city": city_name}]
 
+    try:
 
-get_forecast_from_api("Groningen")
+        collection.update_one({}, update, array_filters=array_filters)
+        print(f"Forecast data for {city_name}, {country_name} inserted successfully.")
+    except PyMongoError as pe:
+        print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
+
 
