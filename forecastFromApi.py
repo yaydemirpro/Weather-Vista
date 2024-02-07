@@ -73,11 +73,13 @@ def get_forecast_from_api(country_name, city_name):
         print(f"{city_name} Not Found")
         #print(forecast_data)
     
-    get_daily_forecast_from_api(country_name, city_name, forecast_data)
+    get_daily_forecast_from_api(country_name, city_name)
     
 ####################################################################################################
-def get_daily_forecast_from_api(country_name, city_name, daily_forecast_data):
-
+def get_daily_forecast_from_api(country_name, city_name ):
+    forecast_url = get_forecast_url(city_name)    
+    apicall = requests.get(forecast_url)
+    daily_forecast_data = apicall.json()
     if daily_forecast_data["cod"] == "200":
         # Extracting relevant information from the JSON response
         main_info = daily_forecast_data["list"][0]["main"]  # Assuming the first item in the list
@@ -117,9 +119,31 @@ def get_daily_forecast_from_api(country_name, city_name, daily_forecast_data):
 
 
                 daily_forecast_data_db.append({"date" : day_date, "temparature": temperature, "description" : description,"icon": icon})
-                
+        print(daily_forecast_data_db)
         
-        insert_daily_forecast_data(country_name, city_name, daily_forecast_data_db)
+        self.forecast_temp_tomorrow.setText(str(daily_forecast_data_db[0]['temperature']))
+        self.forecast_temp_after1.setText(str(daily_forecast_data_db[1]['temperature']))
+        self.forecast_temp_after2.setText(str(daily_forecast_data_db[2]['temperature']))
+        
+        
+        icon_url = f"http://openweathermap.org/img/w/{forecast_data_to_db[0]['icon']}.png"
+        icon_image = requests.get(icon_url)
+        pixmap = QPixmap()
+        pixmap.loadFromData(icon_image.content)
+        self.forecast_icon_tomorrow.setPixmap(pixmap)
+        
+        icon_url = f"http://openweathermap.org/img/w/{forecast_data_to_db[1]['icon']}.png"
+        icon_image = requests.get(icon_url)
+        pixmap = QPixmap()
+        pixmap.loadFromData(icon_image.content)
+        self.forecast_icon_after1.setPixmap(pixmap)
+        
+        icon_url = f"http://openweathermap.org/img/w/{forecast_data_to_db[2]['icon']}.png"
+        icon_image = requests.get(icon_url)
+        pixmap = QPixmap()
+        pixmap.loadFromData(icon_image.content)
+        self.forecast_icon_after2.setPixmap(pixmap)
+        #insert_daily_forecast_data(country_name, city_name, daily_forecast_data_db)
 
     else:
         print(f"{city_name} Not Found")
@@ -162,3 +186,4 @@ def insert_forecast_data(country_name, city_name, forecast_data):
         print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
 
 
+get_daily_forecast_from_api("Germany","Berlin")
