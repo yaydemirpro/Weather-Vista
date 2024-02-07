@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1490</width>
-    <height>820</height>
+    <width>750</width>
+    <height>900</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>750</width>
+    <height>900</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>750</width>
+    <height>900</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,1238 +29,1244 @@
    <string notr="true">background-color: rgb(154, 192, 214);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="weather_forecast_frame_9">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>379</x>
-      <y>447</y>
-      <width>1101</width>
-      <height>171</height>
+      <x>0</x>
+      <y>0</y>
+      <width>761</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <kerning>true</kerning>
+      <family>Papyrus</family>
+      <pointsize>39</pointsize>
+      <italic>false</italic>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: rgb(84, 91, 134);
+color: rgb(154, 192, 214);</string>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+    <property name="text">
+     <string>Weather-Vista</string>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_30" stretch="0,0,0,0">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
-     </property>
-     <property name="leftMargin">
-      <number>7</number>
-     </property>
-     <property name="topMargin">
-      <number>7</number>
-     </property>
-     <property name="rightMargin">
-      <number>4</number>
-     </property>
-     <property name="bottomMargin">
-      <number>7</number>
-     </property>
-     <item>
-      <widget class="QFrame" name="frame_53">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(190, 199, 229);
-background-color: rgb(154, 192, 214);
-padding: 10px;
-border-radius: 20px;
-border: none;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_57">
-        <item row="1" column="1">
-         <widget class="QLabel" name="forecast_temp_3hours">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Sitka Banner</family>
-            <pointsize>18</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font: 18pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-          </property>
-          <property name="text">
-           <string>Please wait..</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="forecast_icon_3hours">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>8</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 25px;
-color: rgb(252, 191, 130);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="forecast_time1_8">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Adobe Caslon Pro</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-color: rgb(170, 119, 138);</string>
-          </property>
-          <property name="text">
-           <string>+3 Hours</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QFrame" name="frame_54">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(190, 199, 229);
-background-color: rgb(154, 192, 214);
-padding: 10px;
-border-radius: 20px;
-border: none;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_58">
-        <item row="1" column="1">
-         <widget class="QLabel" name="forecast_temp_6hours">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Sitka Banner</family>
-            <pointsize>18</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font: 18pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-          </property>
-          <property name="text">
-           <string>Please wait..</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="forecast_icon_6hours">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>8</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 25px;
-color: rgb(252, 191, 130);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="forecast_time2_8">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Adobe Caslon Pro</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-color: rgb(170, 119, 138);</string>
-          </property>
-          <property name="text">
-           <string>+6 Hours</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QFrame" name="frame_55">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(190, 199, 229);
-background-color: rgb(154, 192, 214);
-padding: 10px;
-border-radius: 20px;
-border: none;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_59">
-        <item row="1" column="0">
-         <widget class="QLabel" name="forecast_icon_9hours">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>8</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 25px;
-color: rgb(252, 191, 130);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="forecast_time3_12">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Adobe Caslon Pro</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-color: rgb(170, 119, 138);</string>
-          </property>
-          <property name="text">
-           <string>+9 Hours</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="forecast_temp_9hours">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Sitka Banner</family>
-            <pointsize>18</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font: 18pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-          </property>
-          <property name="text">
-           <string>Please wait..</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QFrame" name="frame_56">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(190, 199, 229);
-background-color: rgb(154, 192, 214);
-padding: 10px;
-border-radius: 20px;
-border: none;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_60">
-        <item row="1" column="0">
-         <widget class="QLabel" name="forecast_icon_12hours">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>8</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 25px;
-color: rgb(252, 191, 130);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="forecast_temp_12hours">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Sitka Banner</family>
-            <pointsize>18</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font: 18pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-          </property>
-          <property name="text">
-           <string>Please wait..</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="forecast_time4_12">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Adobe Caslon Pro</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-color: rgb(170, 119, 138);</string>
-          </property>
-          <property name="text">
-           <string>+12 Hours</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
    </widget>
-   <widget class="QFrame" name="weather_forecast_frame_10">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>630</y>
-      <width>1101</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_31">
-     <item>
-      <widget class="QFrame" name="frame_57">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(190, 199, 229);
-background-color: rgb(154, 192, 214);
-padding: 10px;
-border-radius: 20px;
-border: none;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_61">
-        <item row="1" column="1">
-         <widget class="QLabel" name="forecast_temp_tomorrow">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Sitka Banner</family>
-            <pointsize>18</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font: 18pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-          </property>
-          <property name="text">
-           <string>Please wait..</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="forecast_icon_tomorrow">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>8</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 25px;
-color: rgb(252, 191, 130);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="label_tomorrow">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Adobe Caslon Pro</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-color: rgb(170, 119, 138);</string>
-          </property>
-          <property name="text">
-           <string>Tomorrow</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QFrame" name="frame_58">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(190, 199, 229);
-background-color: rgb(154, 192, 214);
-padding: 10px;
-border-radius: 20px;
-border: none;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_62">
-        <item row="1" column="0">
-         <widget class="QLabel" name="forecast_icon_after1">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>8</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 25px;
-color: rgb(252, 191, 130);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="forecast_temp_after1">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Sitka Banner</family>
-            <pointsize>18</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font: 18pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-          </property>
-          <property name="text">
-           <string>Please wait..</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="label1_tomorrow">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Adobe Caslon Pro</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-color: rgb(170, 119, 138);</string>
-          </property>
-          <property name="text">
-           <string>After Tomorrow</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QFrame" name="frame_59">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(190, 199, 229);
-background-color: rgb(154, 192, 214);
-padding: 10px;
-border-radius: 20px;
-border: none;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_63">
-        <item row="1" column="1">
-         <widget class="QLabel" name="forecast_temp_after2">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Sitka Banner</family>
-            <pointsize>18</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font: 18pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-          </property>
-          <property name="text">
-           <string>Please wait..</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="forecast_icon_after2">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>8</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 25px;
-color: rgb(252, 191, 130);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="label2_tomorrow">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Adobe Caslon Pro</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: none;
-color: rgb(170, 119, 138);</string>
-          </property>
-          <property name="text">
-           <string>+2 Tomorrow</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QFrame" name="frame">
-    <property name="geometry">
-     <rect>
-      <x>379</x>
-      <y>160</y>
-      <width>1111</width>
-      <height>281</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_13">
-     <item>
-      <widget class="QLabel" name="current_weather_description">
-       <property name="font">
-        <font>
-         <family>Adobe Garamond Pro Bold</family>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border: none;
-color: rgb(216, 255, 254);</string>
-       </property>
-       <property name="text">
-        <string>Current Weather Descriptions Here</string>
-       </property>
-      </widget>
-     </item>
-     <item alignment="Qt::AlignTop">
-      <widget class="QFrame" name="middle_frame">
-       <property name="styleSheet">
-        <string notr="true">border: none;
-</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_32">
-        <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-         <widget class="QFrame" name="frame_61">
-          <property name="minimumSize">
-           <size>
-            <width>200</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">padding: 5px;
-border: 5px solid rgb(103, 103, 103);
-border-radius: 100px;
-color: rgb(252, 191, 130);</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_18">
-           <item>
-            <widget class="QLabel" name="current_weather_icon">
-             <property name="minimumSize">
-              <size>
-               <width>100</width>
-               <height>100</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>100</width>
-               <height>100</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>7</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border: none;
-background: none;</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_51">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 20px;
-color: rgb(252, 191, 130);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap>icons/hot.png</pixmap>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="temperature_label">
-          <property name="font">
-           <font>
-            <family>Sitka Banner</family>
-            <pointsize>67</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">
-font: 67pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-          </property>
-          <property name="text">
-           <string>27 C</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QFrame" name="frame_63">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(190, 199, 229);
-background-color: rgb(154, 192, 214);
-padding: 10px;
-border-radius: 20px;</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_65">
-           <item row="0" column="1">
-            <widget class="QLabel" name="wind_speed_label">
-             <property name="font">
-              <font>
-               <family>Sitka Banner</family>
-               <pointsize>15</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">font: 15pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-             </property>
-             <property name="text">
-              <string>113 km/h</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_52">
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 20px;
-color: rgb(252, 191, 130);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap>icons/thermometer.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_50">
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>42</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 20px;
-color: rgb(252, 191, 130);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap>icons/wind.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLabel" name="pressure_label">
-             <property name="font">
-              <font>
-               <family>Sitka Banner</family>
-               <pointsize>15</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">font: 15pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-             </property>
-             <property name="text">
-              <string>1.029 hPa</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLabel" name="pressure_label_3">
-             <property name="font">
-              <font>
-               <family>Sitka Banner</family>
-               <pointsize>15</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">font: 15pt &quot;Sitka Banner&quot;;
-color: rgb(216, 255, 254);</string>
-             </property>
-             <property name="text">
-              <string>%78</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_57">
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">padding: 5px;
-border: 2px solid rgb(103, 103, 103);
-border-radius: 20px;
-color: rgb(252, 191, 130);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap>icons/humidty.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QFrame" name="top_frame">
+   <widget class="QComboBox" name="countries_list">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>60</y>
-      <width>1490</width>
-      <height>62</height>
+      <width>371</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sitka Banner</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding: 5px;
+border: 1px solid rgb(103, 103, 103);
+border-radius: 10px;
+color: rgb(272, 191, 130);</string>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+    <property name="currentIndex">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="search_city">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>110</y>
+      <width>741</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding: 5px;
+border: 1px solid rgb(272, 192, 125);
+border-radius: 10px;</string>
+    </property>
+    <property name="placeholderText">
+     <string>Search Here 🔎</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="current_weather_icon">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>270</y>
+      <width>170</width>
+      <height>170</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>882</width>
-      <height>62</height>
+      <width>170</width>
+      <height>170</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>16777215</width>
-      <height>62</height>
+      <width>170</width>
+      <height>170</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+background: none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="current_weather_description">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>430</y>
+      <width>451</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Current Weather Descriptions Here</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="province_label">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>220</y>
+      <width>391</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Province Name</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="city_name_label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>160</y>
+      <width>711</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>25</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>City Name</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="population_label">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>260</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Population</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_52">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>480</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">padding: 5px;
+
+border-radius: 20px;
+color: rgb(252, 191, 130);</string>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+    <property name="text">
+     <string/>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+    <property name="pixmap">
+     <pixmap>icons/thermometer.png</pixmap>
     </property>
-    <layout class="QGridLayout" name="gridLayout_66">
-     <item row="1" column="1">
-      <widget class="QComboBox" name="countries_list">
-       <property name="font">
-        <font>
-         <family>Sitka Banner</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">padding: 5px;
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_57">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>480</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding: 5px;
+
+border-radius: 20px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>icons/humidty.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_50">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>480</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>42</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding: 5px;
+
+border-radius: 20px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>icons/wind.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_time1_8">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>540</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+border: none;
+color: rgb(170, 119, 138);</string>
+    </property>
+    <property name="text">
+     <string>+3 Hours</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_temp_3hours">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>570</y>
+      <width>101</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Papyrus&quot;;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Please wait..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_icon_3hours">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>570</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+padding: 5px;
+
+border-radius: 25px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_time1_9">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>540</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(170, 119, 138);</string>
+    </property>
+    <property name="text">
+     <string>+6 Hours</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_time1_10">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>540</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(170, 119, 138);</string>
+    </property>
+    <property name="text">
+     <string>+9 Hours</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_time1_11">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>540</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(170, 119, 138);</string>
+    </property>
+    <property name="text">
+     <string>+12 Hours</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_icon_6hours">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>570</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+padding: 5px;
+
+border-radius: 25px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_temp_6hours">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>570</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Papyrus&quot;;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Please wait..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_icon_9hours">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>570</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+padding: 5px;
+
+border-radius: 25px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_temp_9hours">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>570</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Papyrus&quot;;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Please wait..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_icon_12hours">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>570</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+padding: 5px;
+
+border-radius: 25px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_temp_12hours">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>570</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Papyrus&quot;;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Please wait..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_icon_tomorrow">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>690</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+padding: 5px;
+
+border-radius: 25px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_time1_12">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>650</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(170, 119, 138);</string>
+    </property>
+    <property name="text">
+     <string>Tomorrow</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_temp_tomorrow">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>690</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>14</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Papyrus&quot;;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Please wait..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_icon_after1">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>690</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+padding: 5px;
+
+border-radius: 25px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_temp_after1">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>690</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>14</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Papyrus&quot;;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Please wait..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_time1_13">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>650</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(170, 119, 138);</string>
+    </property>
+    <property name="text">
+     <string>Tomorrow +1</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_icon_after2">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>690</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+padding: 5px;
+
+border-radius: 25px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_temp_after2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>690</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>14</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Papyrus&quot;;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>Please wait..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="forecast_time1_14">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>650</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(170, 119, 138);</string>
+    </property>
+    <property name="text">
+     <string>Tomorrow +2</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="temperature_label">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>290</y>
+      <width>341</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>60</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>27 c</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_51">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>320</y>
+      <width>75</width>
+      <height>75</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>75</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding: 5px;
+
+border-radius: 20px;
+color: rgb(252, 191, 130);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>icons/hot.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="wind_speed_label">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>490</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>15</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>113 km/h</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pressure_label">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>490</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>15</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>1.029 hPa</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pressure_label_3">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>480</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>15</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+color: rgb(216, 255, 254);</string>
+    </property>
+    <property name="text">
+     <string>%78</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cities_list">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>60</y>
+      <width>371</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sitka Banner</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding: 5px;
 border: 1px solid rgb(103, 103, 103);
 border-radius: 10px;
 color: rgb(272, 191, 130);</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_54">
-       <property name="font">
-        <font>
-         <family>Sitka Banner</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">padding: 5px;
-color: rgb(77, 96, 107);
-border: 1px solid rgb(272, 192, 125);
-border-radius: 10px;</string>
-       </property>
-       <property name="text">
-        <string>Select Country</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QComboBox" name="cities_list">
-       <property name="font">
-        <font>
-         <family>Sitka Banner</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">padding: 5px;
-border: 1px solid rgb(103, 103, 103);
-border-radius: 10px;
-color: rgb(252, 191, 130);</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QLabel" name="label_53">
-       <property name="font">
-        <font>
-         <family>Sitka Banner</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">padding: 5px;
-border: 1px solid rgb(272, 192, 125);
-border-radius: 10px;
-color: rgb(77, 96, 107);</string>
-       </property>
-       <property name="text">
-        <string>Select City</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+    <property name="currentIndex">
+     <number>-1</number>
+    </property>
    </widget>
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>168</y>
+      <x>200</x>
+      <y>750</y>
       <width>371</width>
-      <height>651</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1278,151 +1296,53 @@ background-color: rgb(154, 192, 214);</string>
      </property>
     </column>
    </widget>
-   <widget class="QLabel" name="city_name_label">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>130</y>
-      <width>1491</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Open Sans Extrabold</family>
-      <pointsize>15</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>City Name</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="search_city">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>120</y>
-      <width>361</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Sitka Banner</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">padding: 5px;
-border: 1px solid rgb(272, 192, 125);
-border-radius: 10px;</string>
-    </property>
-    <property name="placeholderText">
-     <string>Search Here 🔎</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="province_label">
-    <property name="geometry">
-     <rect>
-      <x>940</x>
-      <y>130</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>30</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Adobe Caslon Pro</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 199, 229);
-background-color: rgb(154, 192, 214);</string>
-    </property>
-    <property name="text">
-     <string>Province</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="population_label">
-    <property name="geometry">
-     <rect>
-      <x>1120</x>
-      <y>130</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>30</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Adobe Caslon Pro</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Population</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_21">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>-20</y>
-      <width>1491</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Adobe Garamond Pro Bold</family>
-      <pointsize>25</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border: none;
-color: rgb(170, 119, 138);
-background-color: rgb(64, 150, 225);
-background-color: rgb(110, 137, 153);
-background-color: rgb(181, 225, 250);
-color: rgb(229, 161, 187);</string>
-    </property>
-    <property name="text">
-     <string>Weather-Vista</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
+   <zorder>label</zorder>
+   <zorder>countries_list</zorder>
+   <zorder>search_city</zorder>
+   <zorder>current_weather_description</zorder>
+   <zorder>province_label</zorder>
+   <zorder>city_name_label</zorder>
+   <zorder>population_label</zorder>
+   <zorder>label_52</zorder>
+   <zorder>label_57</zorder>
+   <zorder>label_50</zorder>
+   <zorder>forecast_time1_8</zorder>
+   <zorder>forecast_temp_3hours</zorder>
+   <zorder>forecast_icon_3hours</zorder>
+   <zorder>forecast_time1_9</zorder>
+   <zorder>forecast_time1_10</zorder>
+   <zorder>forecast_time1_11</zorder>
+   <zorder>forecast_icon_6hours</zorder>
+   <zorder>forecast_temp_6hours</zorder>
+   <zorder>forecast_icon_9hours</zorder>
+   <zorder>forecast_temp_9hours</zorder>
+   <zorder>forecast_icon_12hours</zorder>
+   <zorder>forecast_temp_12hours</zorder>
+   <zorder>forecast_icon_tomorrow</zorder>
+   <zorder>forecast_time1_12</zorder>
+   <zorder>forecast_temp_tomorrow</zorder>
+   <zorder>forecast_icon_after1</zorder>
+   <zorder>forecast_temp_after1</zorder>
+   <zorder>forecast_time1_13</zorder>
+   <zorder>forecast_icon_after2</zorder>
+   <zorder>forecast_temp_after2</zorder>
+   <zorder>forecast_time1_14</zorder>
+   <zorder>temperature_label</zorder>
+   <zorder>current_weather_icon</zorder>
+   <zorder>label_51</zorder>
+   <zorder>wind_speed_label</zorder>
+   <zorder>pressure_label</zorder>
+   <zorder>pressure_label_3</zorder>
+   <zorder>cities_list</zorder>
+   <zorder>tableWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1490</width>
-     <height>20</height>
+     <width>750</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
