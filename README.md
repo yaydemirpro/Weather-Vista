@@ -50,9 +50,37 @@ Weather-Vista welcomes contributions! To get started:
    git clone https://github.com/yaydemirpro/Weather-Vista.git
    cd Weather-Vista
 
+2. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+
+3. Configure the database connection:
+   - MongoDB is used as the database. Create a MongoDB database account and update the necessary connection details in the `db_connect.py` file.
+
+4. Configure the API key:
+   - An OpenWeatherMap API key is required. Obtain an API key and add it to the `get_complete_url()` and `get_forecast_url()` functions.
+
+5. Run the application:
+   ```bash
+   python main.py
+
+## Usage
+
+1. When the application is launched, you will see options for countries and cities. After selecting the relevant country, a list of cities will appear. Once you select a city, weather information will be displayed at the bottom of the screen.
+
+2. You can quickly access weather information for a city by typing the city name into the search box.
+
+3. Weather information is presented in terms of current temperature, pressure, humidity, wind speed, and weather description.
+
+## API and Database Operations
+
+- The application fetches weather data using the OpenWeatherMap API.
+- MongoDB is used as the database. City data for each country is stored in the database, and current weather data is retrieved and displayed from there.
 
 ## License
+
 This project is licensed under the Creative Commons Zero v1.0 Universal.
 
 ## Acknowledgements
+
 Special thanks to OpenWeatherMap for providing the weather API.
