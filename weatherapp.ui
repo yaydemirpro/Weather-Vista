@@ -1263,10 +1263,10 @@ color: rgb(272, 191, 130);</string>
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>750</y>
-      <width>371</width>
-      <height>101</height>
+      <x>730</x>
+      <y>850</y>
+      <width>16</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="styleSheet">

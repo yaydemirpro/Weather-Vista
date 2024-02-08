@@ -426,7 +426,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem2 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(200, 750, 371, 101))
+        self.tableWidget.setGeometry(QRect(730, 850, 16, 16))
         self.tableWidget.setStyleSheet(u"background-color: rgb(154, 192, 214);\n"
 "background-color: rgb(154, 192, 214);")
         MainWindow.setCentralWidget(self.centralwidget)
