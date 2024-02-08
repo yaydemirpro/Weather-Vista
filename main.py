@@ -146,6 +146,20 @@ class WeatherVista(QMainWindow):
         db_connection = get_db_connection() 
         document = db_connection.find_one({selected_country: {"$exists": True}})     
         if document:
+            # Check if the selected_country key exists and if the values are a list
+            if isinstance(document[selected_country], list):
+                # Check if each city dictionary has the 'population' key
+                for city_data in document[selected_country]:
+                    if 'population' not in city_data:
+                        print("Missing 'population' key in city data:", city_data)
+                        # Handle the case where 'population' key is missing, possibly skip this city or set a default population
+                        # For now, let's assume default population as 0
+                        city_data['population'] = 0
+            else:
+                print("Cities data is not in the expected list format.")
+                return  # Exit the method if cities data is not in the expected format
+            
+            # Sort the cities based on population
             self.cities = sorted(document[selected_country], key=lambda x: x["population"], reverse=True)
             self.cities_list.clear()
             self.cities_list.addItems([entry["city"] for entry in self.cities])
@@ -154,9 +168,10 @@ class WeatherVista(QMainWindow):
             print("Selected country has no cities")
         
         self.populate_table_widget(self.cities)
-        self.get_forecast_from_api(selected_country,selected_city)
-        self.get_daily_forecast_from_api(selected_country,selected_city)
-        self.get_weather_from_api(selected_country,selected_city)
+        self.get_forecast_from_api(selected_country, selected_city)
+        self.get_daily_forecast_from_api(selected_country, selected_city)
+        self.get_weather_from_api(selected_country, selected_city)
+
         
 
     def populate_table_widget(self, cities):
