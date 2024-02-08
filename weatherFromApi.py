@@ -42,27 +42,27 @@ def get_weather_from_api(country_name, city_name):
         print(f"Icon:{weather_icon}")
 
 
-        insert_weather_data(country_name, city_name, { "temperature": temperature, "pressure": pressure, "humidity": humidity, "wind_speed": wind_speed, "weather_description": weather_description,"Icon": weather_icon})
+        #insert_weather_data(country_name, city_name, { "temperature": temperature, "pressure": pressure, "humidity": humidity, "wind_speed": wind_speed, "weather_description": weather_description,"Icon": weather_icon})
 
     else:
         print(f"{city_name} Not Found")
 
 
-def insert_weather_data(country_name, city_name, weather_data):
-    collection = get_db_connection()
+# def insert_weather_data(country_name, city_name, weather_data):
+#     collection = get_db_connection()
 
-    update = {
-        "$set": {
-            f"{country_name}.$[elem].forecast": weather_data
-        }
-    }
-    array_filters = [{"elem.city": city_name}]
+#     update = {
+#         "$set": {
+#             f"{country_name}.$[elem].forecast": weather_data
+#         }
+#     }
+#     array_filters = [{"elem.city": city_name}]
 
-    try:
-        collection.update_one({}, update, array_filters=array_filters)
-    except PyMongoError as pe:
-        print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
+#     try:
+#         collection.update_one({}, update, array_filters=array_filters)
+#     except PyMongoError as pe:
+#         print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
 
-# Example 
-get_weather_from_api("Groningen")
+# # Example 
+get_weather_from_api("Netherlands","Groningen")
 

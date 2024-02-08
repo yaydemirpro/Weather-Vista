@@ -27,7 +27,8 @@ class WeatherVista(QMainWindow):
         last_country = self.settings.value("last_country", "")
         last_city = self.settings.value("last_city", "")
         self.country_index = 0  # Default value
-
+        self.selected_country = ""
+        
         if last_country:
             self.country_index = self.countries_list.findText(last_country)
             if self.country_index != -1:
@@ -41,6 +42,7 @@ class WeatherVista(QMainWindow):
         self.fill_cities_into_combobox(self.country_index)
         # Change cities according to country
         self.countries_list.currentIndexChanged.connect(self.fill_cities_into_combobox)
+        print("iki fonk arası")
         self.cities_list.currentIndexChanged.connect(self.update_city_label)
         
         #search for cities from search QLineEdit
@@ -130,31 +132,44 @@ class WeatherVista(QMainWindow):
             
                     
     def fill_countries_into_combobox(self):
-        db_connection = get_db_connection()    
+        db_connection = get_db_connection()
         all_documents = db_connection.find()
-        
+
         countries = [country for document in all_documents for country in document.keys() if country != '_id']
         self.countries_list.clear()
         self.countries_list.addItems(countries)
+        
 
 
     def fill_cities_into_combobox(self, index):
         selected_country = self.countries_list.itemText(index)
+        
         db_connection = get_db_connection() 
         document = db_connection.find_one({selected_country: {"$exists": True}})     
         if document:
             self.cities = sorted(document[selected_country], key=lambda x: x["population"], reverse=True)
             self.cities_list.clear()
             self.cities_list.addItems([entry["city"] for entry in self.cities])
+            selected_city = self.cities_list.currentText()
         else:
             print("Selected country has no cities")
         
         self.populate_table_widget(self.cities)
+        self.get_forecast_from_api(selected_country,selected_city)
+        self.get_daily_forecast_from_api(selected_country,selected_city)
+        self.get_weather_from_api(selected_country,selected_city)
 
+
+
+        
+    
+        
+    
+        
 
     def populate_table_widget(self, cities):
         self.tableWidget.setRowCount(len(cities))
-        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setColumnCount(3)
         headers = ["City Name", "Province", "Population"]
         self.tableWidget.setHorizontalHeaderLabels(headers)
 
@@ -179,9 +194,15 @@ class WeatherVista(QMainWindow):
             self.city_name_label.setText(selected_city_data["city"])
             self.province_label.setText(selected_city_data["province"])
             self.population_label.setText(str(selected_city_data["population"]))
+            selected_country = self.countries_list.currentText()
+            self.get_forecast_from_api(selected_country,selected_city)
+            self.get_daily_forecast_from_api(selected_country,selected_city)
+            self.get_weather_from_api(selected_country,selected_city)
+            
         else:
             print(f"Data not found for {selected_city}")
-
+        
+        
     def get_forecast_from_api(self, country_name, city_name):
         
         forecast_url = get_forecast_url(city_name)    
@@ -196,7 +217,7 @@ class WeatherVista(QMainWindow):
             
             forecast_data_to_db = []
             today = forecast_data["list"][0]['dt_txt'].split(' ')[0]
-            print("today", today)
+            #print("today", today)
             
             for x in range(0, 4):
                 item = forecast_data["list"][x]
@@ -212,7 +233,7 @@ class WeatherVista(QMainWindow):
                 date = {'y': year, 'm': month, 'd': day}
                 day_date = ('{m}/{d}/{y}'.format(**date))
                 
-                print(current_date)
+                #print(current_date)
 
                 # Grabs the first 2 integers from our HH:MM:SS string to get the hours
                 hour = int(hour[:2])
@@ -229,7 +250,7 @@ class WeatherVista(QMainWindow):
 
                 # Prints the hours [HH:MM AM/PM]
                 three_hours =('%i:00 %s' % (hour, meridiem))
-                print(three_hours)
+                #print(three_hours)
 
                 # Temperature is measured in Kelvin
                 temperature = int(item['main']['temp'] - 273.15)
@@ -239,24 +260,57 @@ class WeatherVista(QMainWindow):
                 description = item['weather'][0]['description']
 
                 # Prints the description as well as the temperature in Celsius and Fahrenheit
-                print('Weather condition: %s' % description)
-                print(f'Celsius: {temperature} °C')
+
 
                 # Additional weather information
                 icon = item['weather'][0]['icon']
-                print('Icon: {}'.format(icon))
+                
                 forecast_data_to_db.append({ "date":day_date, "time": three_hours, "temperature": temperature, "icon": icon, "description": description})
+            #show temparatures into foracastlabel
+            self.forecast_temp_3hours.setText(str(forecast_data_to_db[0]['temperature']))
+            self.forecast_temp_6hours.setText(str(forecast_data_to_db[1]['temperature']))
+            self.forecast_temp_9hours.setText(str(forecast_data_to_db[2]['temperature']))
+            self.forecast_temp_12hours.setText(str(forecast_data_to_db[3]['temperature']))
+            #show icon into iconlabel
+            icon_url = f"http://openweathermap.org/img/w/{forecast_data_to_db[0]['icon']}.png"
+            icon_image = requests.get(icon_url)
+            pixmap = QPixmap()
+            pixmap.loadFromData(icon_image.content)
+            self.forecast_icon_3hours.setPixmap(pixmap)
             
-            self.insert_forecast_data(country_name, city_name, forecast_data_to_db)
+            icon_url = f"http://openweathermap.org/img/w/{forecast_data_to_db[1]['icon']}.png"
+            icon_image = requests.get(icon_url)
+            pixmap = QPixmap()
+            pixmap.loadFromData(icon_image.content)
+            self.forecast_icon_6hours.setPixmap(pixmap)
+            
+            icon_url = f"http://openweathermap.org/img/w/{forecast_data_to_db[2]['icon']}.png"
+            icon_image = requests.get(icon_url)
+            pixmap = QPixmap()
+            pixmap.loadFromData(icon_image.content)
+            self.forecast_icon_9hours.setPixmap(pixmap)
+            
+            icon_url = f"http://openweathermap.org/img/w/{forecast_data_to_db[2]['icon']}.png"
+            icon_image = requests.get(icon_url)
+            pixmap = QPixmap()
+            pixmap.loadFromData(icon_image.content)
+            self.forecast_icon_12hours.setPixmap(pixmap)
+            
+            
+            #self.insert_forecast_data(self.selected_country, city_name, forecast_data_to_db)
+            
+            
 
         else:
             print(f"{city_name} Not Found")
             #print(forecast_data)
         
-        self.get_daily_forecast_from_api(country_name, city_name, forecast_data)
+        self.get_daily_forecast_from_api(country_name, city_name)
         
-    def get_daily_forecast_from_api(self, country_name, city_name, daily_forecast_data):
-
+    def get_daily_forecast_from_api(self,country_name, city_name ):
+        forecast_url = get_forecast_url(city_name)    
+        apicall = requests.get(forecast_url)
+        daily_forecast_data = apicall.json()
         if daily_forecast_data["cod"] == "200":
             # Extracting relevant information from the JSON response
             main_info = daily_forecast_data["list"][0]["main"]  # Assuming the first item in the list
@@ -283,44 +337,44 @@ class WeatherVista(QMainWindow):
 
                     # Weather condition
                     description = item['weather'][0]['description']
-                    print(day_date)
-
-                    # Prints the description as well as the temperature in Celsius and Fahrenheit
-                    print('Weather condition: %s' % description)
-                    print(f'Celsius: {temperature} °C')
+                    
+                    
 
                     # Additional weather information
                     icon = item['weather'][0]['icon']
-                    print('Icon: {}'.format(icon))
+                    
                     
 
 
-                    daily_forecast_data_db.append({"date" : day_date, "temparature": temperature, "description" : description,"icon": icon})
-                    
+                    daily_forecast_data_db.append({"date" : day_date, "temperature": temperature, "description" : description,"icon": icon})
+            # print(daily_forecast_data_db)
             
-            self.insert_daily_forecast_data(country_name, city_name, daily_forecast_data_db)
+            self.forecast_temp_tomorrow.setText(str(daily_forecast_data_db[0]['temperature']))
+            self.forecast_temp_after1.setText(str(daily_forecast_data_db[1]['temperature']))
+            self.forecast_temp_after2.setText(str(daily_forecast_data_db[2]['temperature']))
+            
+            
+            icon_url = f"http://openweathermap.org/img/w/{daily_forecast_data_db[0]['icon']}.png"
+            icon_image = requests.get(icon_url)
+            pixmap = QPixmap()
+            pixmap.loadFromData(icon_image.content)
+            self.forecast_icon_tomorrow.setPixmap(pixmap)
+            
+            icon_url = f"http://openweathermap.org/img/w/{daily_forecast_data_db[1]['icon']}.png"
+            icon_image = requests.get(icon_url)
+            pixmap = QPixmap()
+            pixmap.loadFromData(icon_image.content)
+            self.forecast_icon_after1.setPixmap(pixmap)
+            
+            icon_url = f"http://openweathermap.org/img/w/{daily_forecast_data_db[2]['icon']}.png"
+            icon_image = requests.get(icon_url)
+            pixmap = QPixmap()
+            pixmap.loadFromData(icon_image.content)
+            self.forecast_icon_after2.setPixmap(pixmap)
+            #insert_daily_forecast_data(country_name, city_name, daily_forecast_data_db)
 
         else:
             print(f"{city_name} Not Found")
-            
-    def insert_daily_forecast_data(self, country_name, city_name, daily_forecast_data):
-        collection = get_db_connection()
-
-        query = {f"{country_name}.city": city_name}
-        update = {
-            "$set": {
-                f"{country_name}.$[elem].forecast": daily_forecast_data
-            }
-        }
-        array_filters = [{"elem.city": city_name}]
-
-        try:
-
-            collection.update_one({}, update, array_filters=array_filters)
-
-        except PyMongoError as pe:
-            print(f'Error inserting daily forecast data for {city_name}, {country_name}: {pe}')
-
 
     def insert_forecast_data(country_name, city_name, forecast_data):
         collection = get_db_connection()
@@ -340,7 +394,7 @@ class WeatherVista(QMainWindow):
             print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
 
     def get_weather_from_api(self, country_name, city_name):
-        
+        print("burada")
         complete_url = get_complete_url(city_name)    
         response = requests.get(complete_url)
         weather_data = response.json()
@@ -365,19 +419,32 @@ class WeatherVista(QMainWindow):
             #icon
             weather_info = weather_data ["weather"]
             weather_icon = weather_info[0]["icon"]
-                     
+            
 
             # Displaying the information
             print(f"Weather in {city_name}:")
-            print(f"Temperature (in Celsius) = {int(temperature)} °C")
-            print(f"Atmospheric pressure (in hPa) = {pressure} hPa")
-            print(f"Humidity (in percentage) = {humidity}%")
-            print(f"Wind Speed = {wind_speed} m/s")
-            print(f"Weather description = {weather_description}")
-            print(f"Icon:{weather_icon}")
+            #print(f"Temperature (in Celsius) = {int(temperature)} °C")
+            self.temperature_label.setText(str(int(temperature))+"°c")
+            #print(f"Atmospheric pressure (in hPa) = {pressure} hPa")
+            self.pressure_label.setText(str(pressure)+"hPa")
+            #print(f"Humidity (in percentage) = {humidity}%")
+            self.pressure_label_3.setText(str(humidity)+"%")
+            #print(f"Wind Speed = {wind_speed} m/s")
+            self.wind_speed_label.setText(str(wind_speed)+"m/s")
+            
+            
+            #print(f"Weather description = {weather_description}")
+            self.current_weather_description.setText((weather_description))
+            #print(f"Icon:{weather_icon}")
+            icon_url = f"http://openweathermap.org/img/w/{weather_icon}.png"
+            icon_image = requests.get(icon_url)
+            pixmap = QPixmap()
+            pixmap.loadFromData(icon_image.content)
+            self.current_weather_icon.setPixmap(pixmap)
 
 
-            self.insert_weather_data(country_name, city_name, { "temperature": temperature, "pressure": pressure, "humidity": humidity, "wind_speed": wind_speed, "weather_description": weather_description,"Icon": weather_icon})
+
+            #self.insert_weather_data(country_name, city_name, { "temperature": temperature, "pressure": pressure, "humidity": humidity, "wind_speed": wind_speed, "weather_description": weather_description,"Icon": weather_icon})
 
         else:
             print(f"{city_name} Not Found")

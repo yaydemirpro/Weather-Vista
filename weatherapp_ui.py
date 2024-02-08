@@ -15,600 +15,406 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
-    QHBoxLayout, QHeaderView, QLabel, QLayout,
+from PySide6.QtWidgets import (QApplication, QComboBox, QHeaderView, QLabel,
     QLineEdit, QMainWindow, QMenuBar, QSizePolicy,
-    QStatusBar, QTableWidget, QTableWidgetItem, QVBoxLayout,
-    QWidget)
+    QStatusBar, QTableWidget, QTableWidgetItem, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1490, 820)
+        MainWindow.resize(750, 900)
+        MainWindow.setMinimumSize(QSize(750, 900))
+        MainWindow.setMaximumSize(QSize(750, 900))
         MainWindow.setStyleSheet(u"background-color: rgb(154, 192, 214);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.weather_forecast_frame_9 = QFrame(self.centralwidget)
-        self.weather_forecast_frame_9.setObjectName(u"weather_forecast_frame_9")
-        self.weather_forecast_frame_9.setEnabled(True)
-        self.weather_forecast_frame_9.setGeometry(QRect(379, 447, 1101, 171))
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(0, 0, 761, 51))
         font = QFont()
-        font.setKerning(True)
-        self.weather_forecast_frame_9.setFont(font)
-        self.weather_forecast_frame_9.setStyleSheet(u"")
-        self.weather_forecast_frame_9.setFrameShape(QFrame.StyledPanel)
-        self.weather_forecast_frame_9.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_30 = QHBoxLayout(self.weather_forecast_frame_9)
-        self.horizontalLayout_30.setSpacing(0)
-        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
-        self.horizontalLayout_30.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.horizontalLayout_30.setContentsMargins(7, 7, 4, 7)
-        self.frame_53 = QFrame(self.weather_forecast_frame_9)
-        self.frame_53.setObjectName(u"frame_53")
-        self.frame_53.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
-"background-color: rgb(154, 192, 214);\n"
-"padding: 10px;\n"
-"border-radius: 20px;\n"
-"border: none;")
-        self.frame_53.setFrameShape(QFrame.StyledPanel)
-        self.frame_53.setFrameShadow(QFrame.Raised)
-        self.gridLayout_57 = QGridLayout(self.frame_53)
-        self.gridLayout_57.setObjectName(u"gridLayout_57")
-        self.forecast_temp_3hours = QLabel(self.frame_53)
-        self.forecast_temp_3hours.setObjectName(u"forecast_temp_3hours")
-        self.forecast_temp_3hours.setMinimumSize(QSize(0, 30))
+        font.setFamilies([u"Papyrus"])
+        font.setPointSize(39)
+        font.setItalic(False)
+        self.label.setFont(font)
+        self.label.setStyleSheet(u"background-color: rgb(84, 91, 134);\n"
+"color: rgb(154, 192, 214);")
+        self.label.setAlignment(Qt.AlignCenter)
+        self.countries_list = QComboBox(self.centralwidget)
+        self.countries_list.setObjectName(u"countries_list")
+        self.countries_list.setGeometry(QRect(0, 60, 371, 38))
         font1 = QFont()
         font1.setFamilies([u"Sitka Banner"])
-        font1.setPointSize(18)
-        font1.setBold(False)
-        font1.setItalic(False)
-        self.forecast_temp_3hours.setFont(font1)
-        self.forecast_temp_3hours.setStyleSheet(u"font: 18pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_57.addWidget(self.forecast_temp_3hours, 1, 1, 1, 1)
-
-        self.forecast_icon_3hours = QLabel(self.frame_53)
-        self.forecast_icon_3hours.setObjectName(u"forecast_icon_3hours")
-        self.forecast_icon_3hours.setMinimumSize(QSize(50, 50))
-        self.forecast_icon_3hours.setMaximumSize(QSize(50, 50))
-        font2 = QFont()
-        font2.setPointSize(8)
-        self.forecast_icon_3hours.setFont(font2)
-        self.forecast_icon_3hours.setStyleSheet(u"border: none;\n"
-"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 25px;\n"
-"color: rgb(252, 191, 130);")
-        self.forecast_icon_3hours.setScaledContents(True)
-
-        self.gridLayout_57.addWidget(self.forecast_icon_3hours, 1, 0, 1, 1)
-
-        self.forecast_time1_8 = QLabel(self.frame_53)
-        self.forecast_time1_8.setObjectName(u"forecast_time1_8")
-        self.forecast_time1_8.setMinimumSize(QSize(0, 30))
-        font3 = QFont()
-        font3.setFamilies([u"Adobe Caslon Pro"])
-        font3.setPointSize(12)
-        self.forecast_time1_8.setFont(font3)
-        self.forecast_time1_8.setStyleSheet(u"border: none;\n"
-"color: rgb(170, 119, 138);")
-        self.forecast_time1_8.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_57.addWidget(self.forecast_time1_8, 0, 0, 1, 2)
-
-
-        self.horizontalLayout_30.addWidget(self.frame_53)
-
-        self.frame_54 = QFrame(self.weather_forecast_frame_9)
-        self.frame_54.setObjectName(u"frame_54")
-        self.frame_54.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
-"background-color: rgb(154, 192, 214);\n"
-"padding: 10px;\n"
-"border-radius: 20px;\n"
-"border: none;")
-        self.frame_54.setFrameShape(QFrame.StyledPanel)
-        self.frame_54.setFrameShadow(QFrame.Raised)
-        self.gridLayout_58 = QGridLayout(self.frame_54)
-        self.gridLayout_58.setObjectName(u"gridLayout_58")
-        self.forecast_temp_6hours = QLabel(self.frame_54)
-        self.forecast_temp_6hours.setObjectName(u"forecast_temp_6hours")
-        self.forecast_temp_6hours.setMinimumSize(QSize(0, 30))
-        self.forecast_temp_6hours.setFont(font1)
-        self.forecast_temp_6hours.setStyleSheet(u"font: 18pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_58.addWidget(self.forecast_temp_6hours, 1, 1, 1, 1)
-
-        self.forecast_icon_6hours = QLabel(self.frame_54)
-        self.forecast_icon_6hours.setObjectName(u"forecast_icon_6hours")
-        self.forecast_icon_6hours.setMinimumSize(QSize(50, 50))
-        self.forecast_icon_6hours.setMaximumSize(QSize(50, 50))
-        self.forecast_icon_6hours.setFont(font2)
-        self.forecast_icon_6hours.setStyleSheet(u"border: none;\n"
-"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 25px;\n"
-"color: rgb(252, 191, 130);")
-        self.forecast_icon_6hours.setScaledContents(True)
-
-        self.gridLayout_58.addWidget(self.forecast_icon_6hours, 1, 0, 1, 1)
-
-        self.forecast_time2_8 = QLabel(self.frame_54)
-        self.forecast_time2_8.setObjectName(u"forecast_time2_8")
-        self.forecast_time2_8.setMinimumSize(QSize(0, 30))
-        self.forecast_time2_8.setFont(font3)
-        self.forecast_time2_8.setStyleSheet(u"border: none;\n"
-"color: rgb(170, 119, 138);")
-        self.forecast_time2_8.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_58.addWidget(self.forecast_time2_8, 0, 0, 1, 2)
-
-
-        self.horizontalLayout_30.addWidget(self.frame_54)
-
-        self.frame_55 = QFrame(self.weather_forecast_frame_9)
-        self.frame_55.setObjectName(u"frame_55")
-        self.frame_55.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
-"background-color: rgb(154, 192, 214);\n"
-"padding: 10px;\n"
-"border-radius: 20px;\n"
-"border: none;")
-        self.frame_55.setFrameShape(QFrame.StyledPanel)
-        self.frame_55.setFrameShadow(QFrame.Raised)
-        self.gridLayout_59 = QGridLayout(self.frame_55)
-        self.gridLayout_59.setObjectName(u"gridLayout_59")
-        self.forecast_icon_9hours = QLabel(self.frame_55)
-        self.forecast_icon_9hours.setObjectName(u"forecast_icon_9hours")
-        self.forecast_icon_9hours.setMinimumSize(QSize(50, 50))
-        self.forecast_icon_9hours.setMaximumSize(QSize(50, 50))
-        self.forecast_icon_9hours.setFont(font2)
-        self.forecast_icon_9hours.setStyleSheet(u"border: none;\n"
-"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 25px;\n"
-"color: rgb(252, 191, 130);")
-        self.forecast_icon_9hours.setScaledContents(True)
-
-        self.gridLayout_59.addWidget(self.forecast_icon_9hours, 1, 0, 1, 1)
-
-        self.forecast_time3_12 = QLabel(self.frame_55)
-        self.forecast_time3_12.setObjectName(u"forecast_time3_12")
-        self.forecast_time3_12.setMinimumSize(QSize(0, 30))
-        self.forecast_time3_12.setFont(font3)
-        self.forecast_time3_12.setStyleSheet(u"border: none;\n"
-"color: rgb(170, 119, 138);")
-        self.forecast_time3_12.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_59.addWidget(self.forecast_time3_12, 0, 0, 1, 2)
-
-        self.forecast_temp_9hours = QLabel(self.frame_55)
-        self.forecast_temp_9hours.setObjectName(u"forecast_temp_9hours")
-        self.forecast_temp_9hours.setMinimumSize(QSize(0, 30))
-        self.forecast_temp_9hours.setFont(font1)
-        self.forecast_temp_9hours.setStyleSheet(u"font: 18pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_59.addWidget(self.forecast_temp_9hours, 1, 1, 1, 1)
-
-
-        self.horizontalLayout_30.addWidget(self.frame_55)
-
-        self.frame_56 = QFrame(self.weather_forecast_frame_9)
-        self.frame_56.setObjectName(u"frame_56")
-        self.frame_56.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
-"background-color: rgb(154, 192, 214);\n"
-"padding: 10px;\n"
-"border-radius: 20px;\n"
-"border: none;")
-        self.frame_56.setFrameShape(QFrame.StyledPanel)
-        self.frame_56.setFrameShadow(QFrame.Raised)
-        self.gridLayout_60 = QGridLayout(self.frame_56)
-        self.gridLayout_60.setObjectName(u"gridLayout_60")
-        self.forecast_icon_12hours = QLabel(self.frame_56)
-        self.forecast_icon_12hours.setObjectName(u"forecast_icon_12hours")
-        self.forecast_icon_12hours.setMinimumSize(QSize(50, 50))
-        self.forecast_icon_12hours.setMaximumSize(QSize(50, 50))
-        self.forecast_icon_12hours.setFont(font2)
-        self.forecast_icon_12hours.setStyleSheet(u"border: none;\n"
-"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 25px;\n"
-"color: rgb(252, 191, 130);")
-        self.forecast_icon_12hours.setScaledContents(True)
-
-        self.gridLayout_60.addWidget(self.forecast_icon_12hours, 1, 0, 1, 1)
-
-        self.forecast_temp_12hours = QLabel(self.frame_56)
-        self.forecast_temp_12hours.setObjectName(u"forecast_temp_12hours")
-        self.forecast_temp_12hours.setMinimumSize(QSize(0, 30))
-        self.forecast_temp_12hours.setFont(font1)
-        self.forecast_temp_12hours.setStyleSheet(u"font: 18pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_60.addWidget(self.forecast_temp_12hours, 1, 1, 1, 1)
-
-        self.forecast_time4_12 = QLabel(self.frame_56)
-        self.forecast_time4_12.setObjectName(u"forecast_time4_12")
-        self.forecast_time4_12.setMinimumSize(QSize(0, 30))
-        self.forecast_time4_12.setFont(font3)
-        self.forecast_time4_12.setStyleSheet(u"border: none;\n"
-"color: rgb(170, 119, 138);")
-        self.forecast_time4_12.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_60.addWidget(self.forecast_time4_12, 0, 0, 1, 2)
-
-
-        self.horizontalLayout_30.addWidget(self.frame_56)
-
-        self.weather_forecast_frame_10 = QFrame(self.centralwidget)
-        self.weather_forecast_frame_10.setObjectName(u"weather_forecast_frame_10")
-        self.weather_forecast_frame_10.setGeometry(QRect(380, 630, 1101, 171))
-        self.weather_forecast_frame_10.setStyleSheet(u"")
-        self.weather_forecast_frame_10.setFrameShape(QFrame.StyledPanel)
-        self.weather_forecast_frame_10.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_31 = QHBoxLayout(self.weather_forecast_frame_10)
-        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
-        self.frame_57 = QFrame(self.weather_forecast_frame_10)
-        self.frame_57.setObjectName(u"frame_57")
-        self.frame_57.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
-"background-color: rgb(154, 192, 214);\n"
-"padding: 10px;\n"
-"border-radius: 20px;\n"
-"border: none;")
-        self.frame_57.setFrameShape(QFrame.StyledPanel)
-        self.frame_57.setFrameShadow(QFrame.Raised)
-        self.gridLayout_61 = QGridLayout(self.frame_57)
-        self.gridLayout_61.setObjectName(u"gridLayout_61")
-        self.forecast_temp_tomorrow = QLabel(self.frame_57)
-        self.forecast_temp_tomorrow.setObjectName(u"forecast_temp_tomorrow")
-        self.forecast_temp_tomorrow.setMinimumSize(QSize(0, 30))
-        self.forecast_temp_tomorrow.setFont(font1)
-        self.forecast_temp_tomorrow.setStyleSheet(u"font: 18pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_61.addWidget(self.forecast_temp_tomorrow, 1, 1, 1, 1)
-
-        self.forecast_icon_tomorrow = QLabel(self.frame_57)
-        self.forecast_icon_tomorrow.setObjectName(u"forecast_icon_tomorrow")
-        self.forecast_icon_tomorrow.setMinimumSize(QSize(50, 50))
-        self.forecast_icon_tomorrow.setMaximumSize(QSize(50, 50))
-        self.forecast_icon_tomorrow.setFont(font2)
-        self.forecast_icon_tomorrow.setStyleSheet(u"border: none;\n"
-"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 25px;\n"
-"color: rgb(252, 191, 130);")
-        self.forecast_icon_tomorrow.setScaledContents(True)
-
-        self.gridLayout_61.addWidget(self.forecast_icon_tomorrow, 1, 0, 1, 1)
-
-        self.label_tomorrow = QLabel(self.frame_57)
-        self.label_tomorrow.setObjectName(u"label_tomorrow")
-        self.label_tomorrow.setMinimumSize(QSize(0, 30))
-        self.label_tomorrow.setFont(font3)
-        self.label_tomorrow.setStyleSheet(u"border: none;\n"
-"color: rgb(170, 119, 138);")
-        self.label_tomorrow.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_61.addWidget(self.label_tomorrow, 0, 0, 1, 2)
-
-
-        self.horizontalLayout_31.addWidget(self.frame_57)
-
-        self.frame_58 = QFrame(self.weather_forecast_frame_10)
-        self.frame_58.setObjectName(u"frame_58")
-        self.frame_58.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
-"background-color: rgb(154, 192, 214);\n"
-"padding: 10px;\n"
-"border-radius: 20px;\n"
-"border: none;")
-        self.frame_58.setFrameShape(QFrame.StyledPanel)
-        self.frame_58.setFrameShadow(QFrame.Raised)
-        self.gridLayout_62 = QGridLayout(self.frame_58)
-        self.gridLayout_62.setObjectName(u"gridLayout_62")
-        self.forecast_icon_after1 = QLabel(self.frame_58)
-        self.forecast_icon_after1.setObjectName(u"forecast_icon_after1")
-        self.forecast_icon_after1.setMinimumSize(QSize(50, 50))
-        self.forecast_icon_after1.setMaximumSize(QSize(50, 50))
-        self.forecast_icon_after1.setFont(font2)
-        self.forecast_icon_after1.setStyleSheet(u"border: none;\n"
-"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 25px;\n"
-"color: rgb(252, 191, 130);")
-        self.forecast_icon_after1.setScaledContents(True)
-
-        self.gridLayout_62.addWidget(self.forecast_icon_after1, 1, 0, 1, 1)
-
-        self.forecast_temp_after1 = QLabel(self.frame_58)
-        self.forecast_temp_after1.setObjectName(u"forecast_temp_after1")
-        self.forecast_temp_after1.setMinimumSize(QSize(0, 30))
-        self.forecast_temp_after1.setFont(font1)
-        self.forecast_temp_after1.setStyleSheet(u"font: 18pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_62.addWidget(self.forecast_temp_after1, 1, 1, 1, 1)
-
-        self.label1_tomorrow = QLabel(self.frame_58)
-        self.label1_tomorrow.setObjectName(u"label1_tomorrow")
-        self.label1_tomorrow.setMinimumSize(QSize(0, 30))
-        self.label1_tomorrow.setFont(font3)
-        self.label1_tomorrow.setStyleSheet(u"border: none;\n"
-"color: rgb(170, 119, 138);")
-        self.label1_tomorrow.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_62.addWidget(self.label1_tomorrow, 0, 0, 1, 2)
-
-
-        self.horizontalLayout_31.addWidget(self.frame_58)
-
-        self.frame_59 = QFrame(self.weather_forecast_frame_10)
-        self.frame_59.setObjectName(u"frame_59")
-        self.frame_59.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
-"background-color: rgb(154, 192, 214);\n"
-"padding: 10px;\n"
-"border-radius: 20px;\n"
-"border: none;")
-        self.frame_59.setFrameShape(QFrame.StyledPanel)
-        self.frame_59.setFrameShadow(QFrame.Raised)
-        self.gridLayout_63 = QGridLayout(self.frame_59)
-        self.gridLayout_63.setObjectName(u"gridLayout_63")
-        self.forecast_temp_after2 = QLabel(self.frame_59)
-        self.forecast_temp_after2.setObjectName(u"forecast_temp_after2")
-        self.forecast_temp_after2.setMinimumSize(QSize(0, 30))
-        self.forecast_temp_after2.setFont(font1)
-        self.forecast_temp_after2.setStyleSheet(u"font: 18pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_63.addWidget(self.forecast_temp_after2, 1, 1, 1, 1)
-
-        self.forecast_icon_after2 = QLabel(self.frame_59)
-        self.forecast_icon_after2.setObjectName(u"forecast_icon_after2")
-        self.forecast_icon_after2.setMinimumSize(QSize(50, 50))
-        self.forecast_icon_after2.setMaximumSize(QSize(50, 50))
-        self.forecast_icon_after2.setFont(font2)
-        self.forecast_icon_after2.setStyleSheet(u"border: none;\n"
-"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 25px;\n"
-"color: rgb(252, 191, 130);")
-        self.forecast_icon_after2.setScaledContents(True)
-
-        self.gridLayout_63.addWidget(self.forecast_icon_after2, 1, 0, 1, 1)
-
-        self.label2_tomorrow = QLabel(self.frame_59)
-        self.label2_tomorrow.setObjectName(u"label2_tomorrow")
-        self.label2_tomorrow.setMinimumSize(QSize(0, 30))
-        self.label2_tomorrow.setFont(font3)
-        self.label2_tomorrow.setStyleSheet(u"border: none;\n"
-"color: rgb(170, 119, 138);")
-
-        self.gridLayout_63.addWidget(self.label2_tomorrow, 0, 0, 1, 2)
-
-
-        self.horizontalLayout_31.addWidget(self.frame_59)
-
-        self.frame = QFrame(self.centralwidget)
-        self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(379, 160, 1111, 281))
-        self.frame.setStyleSheet(u"")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_13 = QVBoxLayout(self.frame)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.current_weather_description = QLabel(self.frame)
-        self.current_weather_description.setObjectName(u"current_weather_description")
-        font4 = QFont()
-        font4.setFamilies([u"Adobe Garamond Pro Bold"])
-        font4.setPointSize(11)
-        self.current_weather_description.setFont(font4)
-        self.current_weather_description.setStyleSheet(u"border: none;\n"
-"color: rgb(216, 255, 254);")
-
-        self.verticalLayout_13.addWidget(self.current_weather_description)
-
-        self.middle_frame = QFrame(self.frame)
-        self.middle_frame.setObjectName(u"middle_frame")
-        self.middle_frame.setStyleSheet(u"border: none;\n"
-"")
-        self.middle_frame.setFrameShape(QFrame.StyledPanel)
-        self.middle_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_32 = QHBoxLayout(self.middle_frame)
-        self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
-        self.frame_61 = QFrame(self.middle_frame)
-        self.frame_61.setObjectName(u"frame_61")
-        self.frame_61.setMinimumSize(QSize(200, 200))
-        self.frame_61.setMaximumSize(QSize(200, 200))
-        self.frame_61.setStyleSheet(u"padding: 5px;\n"
-"border: 5px solid rgb(103, 103, 103);\n"
-"border-radius: 100px;\n"
-"color: rgb(252, 191, 130);")
-        self.frame_61.setFrameShape(QFrame.StyledPanel)
-        self.frame_61.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_18 = QVBoxLayout(self.frame_61)
-        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
-        self.current_weather_icon = QLabel(self.frame_61)
-        self.current_weather_icon.setObjectName(u"current_weather_icon")
-        self.current_weather_icon.setMinimumSize(QSize(100, 100))
-        self.current_weather_icon.setMaximumSize(QSize(100, 100))
-        font5 = QFont()
-        font5.setPointSize(7)
-        self.current_weather_icon.setFont(font5)
-        self.current_weather_icon.setStyleSheet(u"border: none;\n"
-"background: none;")
-        self.current_weather_icon.setScaledContents(True)
-        self.current_weather_icon.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_18.addWidget(self.current_weather_icon)
-
-
-        self.horizontalLayout_32.addWidget(self.frame_61, 0, Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.label_51 = QLabel(self.middle_frame)
-        self.label_51.setObjectName(u"label_51")
-        self.label_51.setMaximumSize(QSize(50, 50))
-        self.label_51.setStyleSheet(u"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 20px;\n"
-"color: rgb(252, 191, 130);")
-        self.label_51.setPixmap(QPixmap(u"icons/hot.png"))
-        self.label_51.setScaledContents(True)
-
-        self.horizontalLayout_32.addWidget(self.label_51)
-
-        self.temperature_label = QLabel(self.middle_frame)
-        self.temperature_label.setObjectName(u"temperature_label")
-        font6 = QFont()
-        font6.setFamilies([u"Sitka Banner"])
-        font6.setPointSize(67)
-        font6.setBold(False)
-        font6.setItalic(False)
-        self.temperature_label.setFont(font6)
-        self.temperature_label.setStyleSheet(u"\n"
-"font: 67pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.horizontalLayout_32.addWidget(self.temperature_label)
-
-        self.frame_63 = QFrame(self.middle_frame)
-        self.frame_63.setObjectName(u"frame_63")
-        self.frame_63.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
-"background-color: rgb(154, 192, 214);\n"
-"padding: 10px;\n"
-"border-radius: 20px;")
-        self.frame_63.setFrameShape(QFrame.StyledPanel)
-        self.frame_63.setFrameShadow(QFrame.Raised)
-        self.gridLayout_65 = QGridLayout(self.frame_63)
-        self.gridLayout_65.setObjectName(u"gridLayout_65")
-        self.wind_speed_label = QLabel(self.frame_63)
-        self.wind_speed_label.setObjectName(u"wind_speed_label")
-        font7 = QFont()
-        font7.setFamilies([u"Sitka Banner"])
-        font7.setPointSize(15)
-        font7.setBold(False)
-        font7.setItalic(False)
-        self.wind_speed_label.setFont(font7)
-        self.wind_speed_label.setStyleSheet(u"font: 15pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_65.addWidget(self.wind_speed_label, 0, 1, 1, 1)
-
-        self.label_52 = QLabel(self.frame_63)
-        self.label_52.setObjectName(u"label_52")
-        self.label_52.setMaximumSize(QSize(50, 50))
-        self.label_52.setStyleSheet(u"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 20px;\n"
-"color: rgb(252, 191, 130);")
-        self.label_52.setPixmap(QPixmap(u"icons/thermometer.png"))
-        self.label_52.setScaledContents(True)
-
-        self.gridLayout_65.addWidget(self.label_52, 1, 0, 1, 1)
-
-        self.label_50 = QLabel(self.frame_63)
-        self.label_50.setObjectName(u"label_50")
-        self.label_50.setMaximumSize(QSize(50, 50))
-        font8 = QFont()
-        font8.setPointSize(42)
-        self.label_50.setFont(font8)
-        self.label_50.setStyleSheet(u"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 20px;\n"
-"color: rgb(252, 191, 130);")
-        self.label_50.setPixmap(QPixmap(u"icons/wind.png"))
-        self.label_50.setScaledContents(True)
-
-        self.gridLayout_65.addWidget(self.label_50, 0, 0, 1, 1)
-
-        self.pressure_label = QLabel(self.frame_63)
-        self.pressure_label.setObjectName(u"pressure_label")
-        self.pressure_label.setFont(font7)
-        self.pressure_label.setStyleSheet(u"font: 15pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_65.addWidget(self.pressure_label, 1, 1, 1, 1)
-
-        self.pressure_label_3 = QLabel(self.frame_63)
-        self.pressure_label_3.setObjectName(u"pressure_label_3")
-        self.pressure_label_3.setFont(font7)
-        self.pressure_label_3.setStyleSheet(u"font: 15pt \"Sitka Banner\";\n"
-"color: rgb(216, 255, 254);")
-
-        self.gridLayout_65.addWidget(self.pressure_label_3, 2, 1, 1, 1)
-
-        self.label_57 = QLabel(self.frame_63)
-        self.label_57.setObjectName(u"label_57")
-        self.label_57.setMaximumSize(QSize(50, 50))
-        self.label_57.setStyleSheet(u"padding: 5px;\n"
-"border: 2px solid rgb(103, 103, 103);\n"
-"border-radius: 20px;\n"
-"color: rgb(252, 191, 130);")
-        self.label_57.setPixmap(QPixmap(u"icons/humidty.png"))
-        self.label_57.setScaledContents(True)
-
-        self.gridLayout_65.addWidget(self.label_57, 2, 0, 1, 1)
-
-
-        self.horizontalLayout_32.addWidget(self.frame_63)
-
-
-        self.verticalLayout_13.addWidget(self.middle_frame, 0, Qt.AlignTop)
-
-        self.top_frame = QFrame(self.centralwidget)
-        self.top_frame.setObjectName(u"top_frame")
-        self.top_frame.setGeometry(QRect(0, 60, 1490, 62))
-        self.top_frame.setMinimumSize(QSize(882, 62))
-        self.top_frame.setMaximumSize(QSize(16777215, 62))
-        self.top_frame.setStyleSheet(u"")
-        self.top_frame.setFrameShape(QFrame.StyledPanel)
-        self.top_frame.setFrameShadow(QFrame.Raised)
-        self.gridLayout_66 = QGridLayout(self.top_frame)
-        self.gridLayout_66.setObjectName(u"gridLayout_66")
-        self.countries_list = QComboBox(self.top_frame)
-        self.countries_list.setObjectName(u"countries_list")
-        font9 = QFont()
-        font9.setFamilies([u"Sitka Banner"])
-        font9.setPointSize(14)
-        self.countries_list.setFont(font9)
+        font1.setPointSize(14)
+        self.countries_list.setFont(font1)
         self.countries_list.setStyleSheet(u"padding: 5px;\n"
 "border: 1px solid rgb(103, 103, 103);\n"
 "border-radius: 10px;\n"
 "color: rgb(272, 191, 130);")
-
-        self.gridLayout_66.addWidget(self.countries_list, 1, 1, 1, 1)
-
-        self.label_54 = QLabel(self.top_frame)
-        self.label_54.setObjectName(u"label_54")
-        self.label_54.setFont(font9)
-        self.label_54.setStyleSheet(u"padding: 5px;\n"
-"color: rgb(77, 96, 107);\n"
+        self.search_city = QLineEdit(self.centralwidget)
+        self.search_city.setObjectName(u"search_city")
+        self.search_city.setGeometry(QRect(0, 110, 741, 41))
+        font2 = QFont()
+        font2.setFamilies([u"Papyrus"])
+        font2.setPointSize(14)
+        self.search_city.setFont(font2)
+        self.search_city.setStyleSheet(u"padding: 5px;\n"
 "border: 1px solid rgb(272, 192, 125);\n"
 "border-radius: 10px;")
-
-        self.gridLayout_66.addWidget(self.label_54, 1, 0, 1, 1)
-
-        self.cities_list = QComboBox(self.top_frame)
+        self.current_weather_icon = QLabel(self.centralwidget)
+        self.current_weather_icon.setObjectName(u"current_weather_icon")
+        self.current_weather_icon.setGeometry(QRect(80, 270, 170, 170))
+        self.current_weather_icon.setMinimumSize(QSize(170, 170))
+        self.current_weather_icon.setMaximumSize(QSize(170, 170))
+        font3 = QFont()
+        font3.setPointSize(7)
+        self.current_weather_icon.setFont(font3)
+        self.current_weather_icon.setStyleSheet(u"\n"
+"background: none;")
+        self.current_weather_icon.setScaledContents(True)
+        self.current_weather_icon.setAlignment(Qt.AlignCenter)
+        self.current_weather_description = QLabel(self.centralwidget)
+        self.current_weather_description.setObjectName(u"current_weather_description")
+        self.current_weather_description.setGeometry(QRect(180, 430, 451, 31))
+        font4 = QFont()
+        font4.setFamilies([u"Papyrus"])
+        font4.setPointSize(15)
+        self.current_weather_description.setFont(font4)
+        self.current_weather_description.setStyleSheet(u"border: none;\n"
+"color: rgb(216, 255, 254);")
+        self.current_weather_description.setAlignment(Qt.AlignCenter)
+        self.province_label = QLabel(self.centralwidget)
+        self.province_label.setObjectName(u"province_label")
+        self.province_label.setGeometry(QRect(200, 220, 391, 31))
+        self.province_label.setFont(font4)
+        self.province_label.setStyleSheet(u"border: none;\n"
+"color: rgb(216, 255, 254);")
+        self.province_label.setAlignment(Qt.AlignCenter)
+        self.city_name_label = QLabel(self.centralwidget)
+        self.city_name_label.setObjectName(u"city_name_label")
+        self.city_name_label.setGeometry(QRect(30, 160, 711, 61))
+        font5 = QFont()
+        font5.setFamilies([u"Papyrus"])
+        font5.setPointSize(25)
+        font5.setBold(True)
+        self.city_name_label.setFont(font5)
+        self.city_name_label.setStyleSheet(u"border: none;\n"
+"color: rgb(216, 255, 254);")
+        self.city_name_label.setAlignment(Qt.AlignCenter)
+        self.population_label = QLabel(self.centralwidget)
+        self.population_label.setObjectName(u"population_label")
+        self.population_label.setGeometry(QRect(300, 260, 171, 31))
+        font6 = QFont()
+        font6.setFamilies([u"Papyrus"])
+        font6.setPointSize(12)
+        self.population_label.setFont(font6)
+        self.population_label.setStyleSheet(u"border: none;\n"
+"color: rgb(216, 255, 254);")
+        self.population_label.setAlignment(Qt.AlignCenter)
+        self.label_52 = QLabel(self.centralwidget)
+        self.label_52.setObjectName(u"label_52")
+        self.label_52.setGeometry(QRect(350, 480, 50, 50))
+        self.label_52.setMaximumSize(QSize(50, 50))
+        self.label_52.setStyleSheet(u"padding: 5px;\n"
+"\n"
+"border-radius: 20px;\n"
+"color: rgb(252, 191, 130);")
+        self.label_52.setPixmap(QPixmap(u"icons/thermometer.png"))
+        self.label_52.setScaledContents(True)
+        self.label_57 = QLabel(self.centralwidget)
+        self.label_57.setObjectName(u"label_57")
+        self.label_57.setGeometry(QRect(550, 480, 50, 50))
+        self.label_57.setMaximumSize(QSize(50, 50))
+        self.label_57.setStyleSheet(u"padding: 5px;\n"
+"\n"
+"border-radius: 20px;\n"
+"color: rgb(252, 191, 130);")
+        self.label_57.setPixmap(QPixmap(u"icons/humidty.png"))
+        self.label_57.setScaledContents(True)
+        self.label_50 = QLabel(self.centralwidget)
+        self.label_50.setObjectName(u"label_50")
+        self.label_50.setGeometry(QRect(140, 480, 50, 50))
+        self.label_50.setMaximumSize(QSize(50, 50))
+        font7 = QFont()
+        font7.setPointSize(42)
+        self.label_50.setFont(font7)
+        self.label_50.setStyleSheet(u"padding: 5px;\n"
+"\n"
+"border-radius: 20px;\n"
+"color: rgb(252, 191, 130);")
+        self.label_50.setPixmap(QPixmap(u"icons/wind.png"))
+        self.label_50.setScaledContents(True)
+        self.forecast_time1_8 = QLabel(self.centralwidget)
+        self.forecast_time1_8.setObjectName(u"forecast_time1_8")
+        self.forecast_time1_8.setGeometry(QRect(50, 540, 131, 41))
+        self.forecast_time1_8.setMinimumSize(QSize(0, 30))
+        font8 = QFont()
+        font8.setFamilies([u"Papyrus"])
+        font8.setPointSize(14)
+        font8.setBold(True)
+        font8.setItalic(False)
+        self.forecast_time1_8.setFont(font8)
+        self.forecast_time1_8.setStyleSheet(u"\n"
+"border: none;\n"
+"color: rgb(170, 119, 138);")
+        self.forecast_time1_8.setAlignment(Qt.AlignCenter)
+        self.forecast_temp_3hours = QLabel(self.centralwidget)
+        self.forecast_temp_3hours.setObjectName(u"forecast_temp_3hours")
+        self.forecast_temp_3hours.setGeometry(QRect(90, 570, 101, 51))
+        self.forecast_temp_3hours.setMinimumSize(QSize(0, 30))
+        font9 = QFont()
+        font9.setFamilies([u"Papyrus"])
+        font9.setPointSize(12)
+        font9.setBold(False)
+        font9.setItalic(False)
+        self.forecast_temp_3hours.setFont(font9)
+        self.forecast_temp_3hours.setStyleSheet(u"font: 12pt \"Papyrus\";\n"
+"color: rgb(216, 255, 254);")
+        self.forecast_icon_3hours = QLabel(self.centralwidget)
+        self.forecast_icon_3hours.setObjectName(u"forecast_icon_3hours")
+        self.forecast_icon_3hours.setGeometry(QRect(40, 570, 50, 50))
+        self.forecast_icon_3hours.setMinimumSize(QSize(50, 50))
+        self.forecast_icon_3hours.setMaximumSize(QSize(50, 50))
+        font10 = QFont()
+        font10.setPointSize(8)
+        self.forecast_icon_3hours.setFont(font10)
+        self.forecast_icon_3hours.setStyleSheet(u"border: none;\n"
+"padding: 5px;\n"
+"\n"
+"border-radius: 25px;\n"
+"color: rgb(252, 191, 130);")
+        self.forecast_icon_3hours.setScaledContents(True)
+        self.forecast_time1_9 = QLabel(self.centralwidget)
+        self.forecast_time1_9.setObjectName(u"forecast_time1_9")
+        self.forecast_time1_9.setGeometry(QRect(220, 540, 131, 41))
+        self.forecast_time1_9.setMinimumSize(QSize(0, 30))
+        font11 = QFont()
+        font11.setFamilies([u"Papyrus"])
+        font11.setPointSize(12)
+        font11.setBold(True)
+        self.forecast_time1_9.setFont(font11)
+        self.forecast_time1_9.setStyleSheet(u"border: none;\n"
+"color: rgb(170, 119, 138);")
+        self.forecast_time1_9.setAlignment(Qt.AlignCenter)
+        self.forecast_time1_10 = QLabel(self.centralwidget)
+        self.forecast_time1_10.setObjectName(u"forecast_time1_10")
+        self.forecast_time1_10.setGeometry(QRect(390, 540, 131, 41))
+        self.forecast_time1_10.setMinimumSize(QSize(0, 30))
+        font12 = QFont()
+        font12.setFamilies([u"Papyrus"])
+        font12.setPointSize(12)
+        font12.setBold(True)
+        font12.setItalic(False)
+        self.forecast_time1_10.setFont(font12)
+        self.forecast_time1_10.setStyleSheet(u"border: none;\n"
+"color: rgb(170, 119, 138);")
+        self.forecast_time1_10.setAlignment(Qt.AlignCenter)
+        self.forecast_time1_11 = QLabel(self.centralwidget)
+        self.forecast_time1_11.setObjectName(u"forecast_time1_11")
+        self.forecast_time1_11.setGeometry(QRect(580, 540, 131, 41))
+        self.forecast_time1_11.setMinimumSize(QSize(0, 30))
+        self.forecast_time1_11.setFont(font11)
+        self.forecast_time1_11.setStyleSheet(u"border: none;\n"
+"color: rgb(170, 119, 138);")
+        self.forecast_time1_11.setAlignment(Qt.AlignCenter)
+        self.forecast_icon_6hours = QLabel(self.centralwidget)
+        self.forecast_icon_6hours.setObjectName(u"forecast_icon_6hours")
+        self.forecast_icon_6hours.setGeometry(QRect(210, 570, 50, 50))
+        self.forecast_icon_6hours.setMinimumSize(QSize(50, 50))
+        self.forecast_icon_6hours.setMaximumSize(QSize(50, 50))
+        self.forecast_icon_6hours.setFont(font10)
+        self.forecast_icon_6hours.setStyleSheet(u"border: none;\n"
+"padding: 5px;\n"
+"\n"
+"border-radius: 25px;\n"
+"color: rgb(252, 191, 130);")
+        self.forecast_icon_6hours.setScaledContents(True)
+        self.forecast_temp_6hours = QLabel(self.centralwidget)
+        self.forecast_temp_6hours.setObjectName(u"forecast_temp_6hours")
+        self.forecast_temp_6hours.setGeometry(QRect(260, 570, 91, 51))
+        self.forecast_temp_6hours.setMinimumSize(QSize(0, 30))
+        self.forecast_temp_6hours.setFont(font9)
+        self.forecast_temp_6hours.setStyleSheet(u"font: 12pt \"Papyrus\";\n"
+"color: rgb(216, 255, 254);")
+        self.forecast_icon_9hours = QLabel(self.centralwidget)
+        self.forecast_icon_9hours.setObjectName(u"forecast_icon_9hours")
+        self.forecast_icon_9hours.setGeometry(QRect(380, 570, 50, 50))
+        self.forecast_icon_9hours.setMinimumSize(QSize(50, 50))
+        self.forecast_icon_9hours.setMaximumSize(QSize(50, 50))
+        self.forecast_icon_9hours.setFont(font10)
+        self.forecast_icon_9hours.setStyleSheet(u"border: none;\n"
+"padding: 5px;\n"
+"\n"
+"border-radius: 25px;\n"
+"color: rgb(252, 191, 130);")
+        self.forecast_icon_9hours.setScaledContents(True)
+        self.forecast_temp_9hours = QLabel(self.centralwidget)
+        self.forecast_temp_9hours.setObjectName(u"forecast_temp_9hours")
+        self.forecast_temp_9hours.setGeometry(QRect(430, 570, 91, 51))
+        self.forecast_temp_9hours.setMinimumSize(QSize(0, 30))
+        self.forecast_temp_9hours.setFont(font9)
+        self.forecast_temp_9hours.setStyleSheet(u"font: 12pt \"Papyrus\";\n"
+"color: rgb(216, 255, 254);")
+        self.forecast_icon_12hours = QLabel(self.centralwidget)
+        self.forecast_icon_12hours.setObjectName(u"forecast_icon_12hours")
+        self.forecast_icon_12hours.setGeometry(QRect(570, 570, 50, 50))
+        self.forecast_icon_12hours.setMinimumSize(QSize(50, 50))
+        self.forecast_icon_12hours.setMaximumSize(QSize(50, 50))
+        self.forecast_icon_12hours.setFont(font10)
+        self.forecast_icon_12hours.setStyleSheet(u"border: none;\n"
+"padding: 5px;\n"
+"\n"
+"border-radius: 25px;\n"
+"color: rgb(252, 191, 130);")
+        self.forecast_icon_12hours.setScaledContents(True)
+        self.forecast_temp_12hours = QLabel(self.centralwidget)
+        self.forecast_temp_12hours.setObjectName(u"forecast_temp_12hours")
+        self.forecast_temp_12hours.setGeometry(QRect(620, 570, 91, 51))
+        self.forecast_temp_12hours.setMinimumSize(QSize(0, 30))
+        self.forecast_temp_12hours.setFont(font9)
+        self.forecast_temp_12hours.setStyleSheet(u"font: 12pt \"Papyrus\";\n"
+"color: rgb(216, 255, 254);")
+        self.forecast_icon_tomorrow = QLabel(self.centralwidget)
+        self.forecast_icon_tomorrow.setObjectName(u"forecast_icon_tomorrow")
+        self.forecast_icon_tomorrow.setGeometry(QRect(80, 690, 50, 50))
+        self.forecast_icon_tomorrow.setMinimumSize(QSize(50, 50))
+        self.forecast_icon_tomorrow.setMaximumSize(QSize(50, 50))
+        self.forecast_icon_tomorrow.setFont(font10)
+        self.forecast_icon_tomorrow.setStyleSheet(u"border: none;\n"
+"padding: 5px;\n"
+"\n"
+"border-radius: 25px;\n"
+"color: rgb(252, 191, 130);")
+        self.forecast_icon_tomorrow.setScaledContents(True)
+        self.forecast_time1_12 = QLabel(self.centralwidget)
+        self.forecast_time1_12.setObjectName(u"forecast_time1_12")
+        self.forecast_time1_12.setGeometry(QRect(90, 650, 131, 41))
+        self.forecast_time1_12.setMinimumSize(QSize(0, 30))
+        font13 = QFont()
+        font13.setFamilies([u"Papyrus"])
+        font13.setPointSize(14)
+        font13.setBold(True)
+        self.forecast_time1_12.setFont(font13)
+        self.forecast_time1_12.setStyleSheet(u"border: none;\n"
+"color: rgb(170, 119, 138);")
+        self.forecast_time1_12.setAlignment(Qt.AlignCenter)
+        self.forecast_temp_tomorrow = QLabel(self.centralwidget)
+        self.forecast_temp_tomorrow.setObjectName(u"forecast_temp_tomorrow")
+        self.forecast_temp_tomorrow.setGeometry(QRect(130, 690, 121, 51))
+        self.forecast_temp_tomorrow.setMinimumSize(QSize(0, 30))
+        font14 = QFont()
+        font14.setFamilies([u"Papyrus"])
+        font14.setPointSize(14)
+        font14.setBold(False)
+        font14.setItalic(False)
+        self.forecast_temp_tomorrow.setFont(font14)
+        self.forecast_temp_tomorrow.setStyleSheet(u"font: 14pt \"Papyrus\";\n"
+"color: rgb(216, 255, 254);")
+        self.forecast_icon_after1 = QLabel(self.centralwidget)
+        self.forecast_icon_after1.setObjectName(u"forecast_icon_after1")
+        self.forecast_icon_after1.setGeometry(QRect(280, 690, 50, 50))
+        self.forecast_icon_after1.setMinimumSize(QSize(50, 50))
+        self.forecast_icon_after1.setMaximumSize(QSize(50, 50))
+        self.forecast_icon_after1.setFont(font10)
+        self.forecast_icon_after1.setStyleSheet(u"border: none;\n"
+"padding: 5px;\n"
+"\n"
+"border-radius: 25px;\n"
+"color: rgb(252, 191, 130);")
+        self.forecast_icon_after1.setScaledContents(True)
+        self.forecast_temp_after1 = QLabel(self.centralwidget)
+        self.forecast_temp_after1.setObjectName(u"forecast_temp_after1")
+        self.forecast_temp_after1.setGeometry(QRect(330, 690, 121, 51))
+        self.forecast_temp_after1.setMinimumSize(QSize(0, 30))
+        self.forecast_temp_after1.setFont(font14)
+        self.forecast_temp_after1.setStyleSheet(u"font: 14pt \"Papyrus\";\n"
+"color: rgb(216, 255, 254);")
+        self.forecast_time1_13 = QLabel(self.centralwidget)
+        self.forecast_time1_13.setObjectName(u"forecast_time1_13")
+        self.forecast_time1_13.setGeometry(QRect(290, 650, 151, 41))
+        self.forecast_time1_13.setMinimumSize(QSize(0, 30))
+        self.forecast_time1_13.setFont(font13)
+        self.forecast_time1_13.setStyleSheet(u"border: none;\n"
+"color: rgb(170, 119, 138);")
+        self.forecast_time1_13.setAlignment(Qt.AlignCenter)
+        self.forecast_icon_after2 = QLabel(self.centralwidget)
+        self.forecast_icon_after2.setObjectName(u"forecast_icon_after2")
+        self.forecast_icon_after2.setGeometry(QRect(480, 690, 50, 50))
+        self.forecast_icon_after2.setMinimumSize(QSize(50, 50))
+        self.forecast_icon_after2.setMaximumSize(QSize(50, 50))
+        self.forecast_icon_after2.setFont(font10)
+        self.forecast_icon_after2.setStyleSheet(u"border: none;\n"
+"padding: 5px;\n"
+"\n"
+"border-radius: 25px;\n"
+"color: rgb(252, 191, 130);")
+        self.forecast_icon_after2.setScaledContents(True)
+        self.forecast_temp_after2 = QLabel(self.centralwidget)
+        self.forecast_temp_after2.setObjectName(u"forecast_temp_after2")
+        self.forecast_temp_after2.setGeometry(QRect(530, 690, 121, 51))
+        self.forecast_temp_after2.setMinimumSize(QSize(0, 30))
+        self.forecast_temp_after2.setFont(font14)
+        self.forecast_temp_after2.setStyleSheet(u"font: 14pt \"Papyrus\";\n"
+"color: rgb(216, 255, 254);")
+        self.forecast_time1_14 = QLabel(self.centralwidget)
+        self.forecast_time1_14.setObjectName(u"forecast_time1_14")
+        self.forecast_time1_14.setGeometry(QRect(490, 650, 151, 41))
+        self.forecast_time1_14.setMinimumSize(QSize(0, 30))
+        self.forecast_time1_14.setFont(font13)
+        self.forecast_time1_14.setStyleSheet(u"border: none;\n"
+"color: rgb(170, 119, 138);")
+        self.forecast_time1_14.setAlignment(Qt.AlignCenter)
+        self.temperature_label = QLabel(self.centralwidget)
+        self.temperature_label.setObjectName(u"temperature_label")
+        self.temperature_label.setGeometry(QRect(210, 290, 341, 141))
+        font15 = QFont()
+        font15.setFamilies([u"Papyrus"])
+        font15.setPointSize(60)
+        self.temperature_label.setFont(font15)
+        self.temperature_label.setStyleSheet(u"border: none;\n"
+"color: rgb(216, 255, 254);")
+        self.temperature_label.setAlignment(Qt.AlignCenter)
+        self.label_51 = QLabel(self.centralwidget)
+        self.label_51.setObjectName(u"label_51")
+        self.label_51.setGeometry(QRect(500, 320, 75, 75))
+        self.label_51.setMaximumSize(QSize(75, 75))
+        self.label_51.setStyleSheet(u"padding: 5px;\n"
+"\n"
+"border-radius: 20px;\n"
+"color: rgb(252, 191, 130);")
+        self.label_51.setPixmap(QPixmap(u"icons/hot.png"))
+        self.label_51.setScaledContents(True)
+        self.wind_speed_label = QLabel(self.centralwidget)
+        self.wind_speed_label.setObjectName(u"wind_speed_label")
+        self.wind_speed_label.setGeometry(QRect(190, 490, 101, 31))
+        font16 = QFont()
+        font16.setFamilies([u"Papyrus"])
+        font16.setPointSize(15)
+        font16.setBold(False)
+        font16.setItalic(False)
+        self.wind_speed_label.setFont(font16)
+        self.wind_speed_label.setStyleSheet(u"\n"
+"color: rgb(216, 255, 254);")
+        self.pressure_label = QLabel(self.centralwidget)
+        self.pressure_label.setObjectName(u"pressure_label")
+        self.pressure_label.setGeometry(QRect(400, 490, 121, 31))
+        self.pressure_label.setFont(font16)
+        self.pressure_label.setStyleSheet(u"\n"
+"color: rgb(216, 255, 254);")
+        self.pressure_label_3 = QLabel(self.centralwidget)
+        self.pressure_label_3.setObjectName(u"pressure_label_3")
+        self.pressure_label_3.setGeometry(QRect(600, 480, 51, 41))
+        self.pressure_label_3.setFont(font16)
+        self.pressure_label_3.setStyleSheet(u"\n"
+"color: rgb(216, 255, 254);")
+        self.cities_list = QComboBox(self.centralwidget)
         self.cities_list.setObjectName(u"cities_list")
-        self.cities_list.setFont(font9)
+        self.cities_list.setGeometry(QRect(370, 60, 371, 38))
+        self.cities_list.setFont(font1)
         self.cities_list.setStyleSheet(u"padding: 5px;\n"
 "border: 1px solid rgb(103, 103, 103);\n"
 "border-radius: 10px;\n"
-"color: rgb(252, 191, 130);")
-
-        self.gridLayout_66.addWidget(self.cities_list, 1, 3, 1, 1)
-
-        self.label_53 = QLabel(self.top_frame)
-        self.label_53.setObjectName(u"label_53")
-        self.label_53.setFont(font9)
-        self.label_53.setStyleSheet(u"padding: 5px;\n"
-"border: 1px solid rgb(272, 192, 125);\n"
-"border-radius: 10px;\n"
-"color: rgb(77, 96, 107);")
-
-        self.gridLayout_66.addWidget(self.label_53, 1, 2, 1, 1)
-
+"color: rgb(272, 191, 130);")
         self.tableWidget = QTableWidget(self.centralwidget)
         if (self.tableWidget.columnCount() < 3):
             self.tableWidget.setColumnCount(3)
@@ -620,57 +426,52 @@ class Ui_MainWindow(object):
         __qtablewidgetitem2 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(0, 168, 371, 651))
+        self.tableWidget.setGeometry(QRect(200, 750, 371, 101))
         self.tableWidget.setStyleSheet(u"background-color: rgb(154, 192, 214);\n"
 "background-color: rgb(154, 192, 214);")
-        self.city_name_label = QLabel(self.centralwidget)
-        self.city_name_label.setObjectName(u"city_name_label")
-        self.city_name_label.setGeometry(QRect(40, 130, 1491, 31))
-        font10 = QFont()
-        font10.setFamilies([u"Open Sans Extrabold"])
-        font10.setPointSize(15)
-        font10.setBold(False)
-        self.city_name_label.setFont(font10)
-        self.city_name_label.setStyleSheet(u"")
-        self.city_name_label.setAlignment(Qt.AlignCenter)
-        self.search_city = QLineEdit(self.centralwidget)
-        self.search_city.setObjectName(u"search_city")
-        self.search_city.setGeometry(QRect(10, 120, 361, 41))
-        self.search_city.setFont(font9)
-        self.search_city.setStyleSheet(u"padding: 5px;\n"
-"border: 1px solid rgb(272, 192, 125);\n"
-"border-radius: 10px;")
-        self.region_label = QLabel(self.centralwidget)
-        self.region_label.setObjectName(u"region_label")
-        self.region_label.setGeometry(QRect(940, 130, 81, 31))
-        self.region_label.setMinimumSize(QSize(0, 30))
-        self.region_label.setFont(font3)
-        self.region_label.setStyleSheet(u"background-color: rgb(190, 199, 229);\n"
-"background-color: rgb(154, 192, 214);")
-        self.population_label = QLabel(self.centralwidget)
-        self.population_label.setObjectName(u"population_label")
-        self.population_label.setGeometry(QRect(1120, 130, 101, 31))
-        self.population_label.setMinimumSize(QSize(0, 30))
-        self.population_label.setFont(font3)
-        self.label_21 = QLabel(self.centralwidget)
-        self.label_21.setObjectName(u"label_21")
-        self.label_21.setGeometry(QRect(0, -20, 1491, 91))
-        font11 = QFont()
-        font11.setFamilies([u"Adobe Garamond Pro Bold"])
-        font11.setPointSize(25)
-        font11.setBold(True)
-        self.label_21.setFont(font11)
-        self.label_21.setStyleSheet(u"border: none;\n"
-"color: rgb(170, 119, 138);\n"
-"background-color: rgb(64, 150, 225);\n"
-"background-color: rgb(110, 137, 153);\n"
-"background-color: rgb(181, 225, 250);\n"
-"color: rgb(229, 161, 187);")
-        self.label_21.setAlignment(Qt.AlignCenter)
         MainWindow.setCentralWidget(self.centralwidget)
+        self.label.raise_()
+        self.countries_list.raise_()
+        self.search_city.raise_()
+        self.current_weather_description.raise_()
+        self.province_label.raise_()
+        self.city_name_label.raise_()
+        self.population_label.raise_()
+        self.label_52.raise_()
+        self.label_57.raise_()
+        self.label_50.raise_()
+        self.forecast_time1_8.raise_()
+        self.forecast_temp_3hours.raise_()
+        self.forecast_icon_3hours.raise_()
+        self.forecast_time1_9.raise_()
+        self.forecast_time1_10.raise_()
+        self.forecast_time1_11.raise_()
+        self.forecast_icon_6hours.raise_()
+        self.forecast_temp_6hours.raise_()
+        self.forecast_icon_9hours.raise_()
+        self.forecast_temp_9hours.raise_()
+        self.forecast_icon_12hours.raise_()
+        self.forecast_temp_12hours.raise_()
+        self.forecast_icon_tomorrow.raise_()
+        self.forecast_time1_12.raise_()
+        self.forecast_temp_tomorrow.raise_()
+        self.forecast_icon_after1.raise_()
+        self.forecast_temp_after1.raise_()
+        self.forecast_time1_13.raise_()
+        self.forecast_icon_after2.raise_()
+        self.forecast_temp_after2.raise_()
+        self.forecast_time1_14.raise_()
+        self.temperature_label.raise_()
+        self.current_weather_icon.raise_()
+        self.label_51.raise_()
+        self.wind_speed_label.raise_()
+        self.pressure_label.raise_()
+        self.pressure_label_3.raise_()
+        self.cities_list.raise_()
+        self.tableWidget.raise_()
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1490, 26))
+        self.menubar.setGeometry(QRect(0, 0, 750, 26))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -678,54 +479,58 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
+        self.countries_list.setCurrentIndex(-1)
+        self.cities_list.setCurrentIndex(-1)
+
+
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Weather-Vista", None))
+        self.countries_list.setCurrentText("")
+        self.search_city.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Here \ud83d\udd0e", None))
+        self.current_weather_icon.setText("")
+        self.current_weather_description.setText(QCoreApplication.translate("MainWindow", u"Current Weather Descriptions Here", None))
+        self.province_label.setText(QCoreApplication.translate("MainWindow", u"Province Name", None))
+        self.city_name_label.setText(QCoreApplication.translate("MainWindow", u"City Name", None))
+        self.population_label.setText(QCoreApplication.translate("MainWindow", u"Population", None))
+        self.label_52.setText("")
+        self.label_57.setText("")
+        self.label_50.setText("")
+        self.forecast_time1_8.setText(QCoreApplication.translate("MainWindow", u"+3 Hours", None))
         self.forecast_temp_3hours.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
         self.forecast_icon_3hours.setText("")
-        self.forecast_time1_8.setText(QCoreApplication.translate("MainWindow", u"+3 Hours", None))
-        self.forecast_temp_6hours.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
+        self.forecast_time1_9.setText(QCoreApplication.translate("MainWindow", u"+6 Hours", None))
+        self.forecast_time1_10.setText(QCoreApplication.translate("MainWindow", u"+9 Hours", None))
+        self.forecast_time1_11.setText(QCoreApplication.translate("MainWindow", u"+12 Hours", None))
         self.forecast_icon_6hours.setText("")
-        self.forecast_time2_8.setText(QCoreApplication.translate("MainWindow", u"+6 Hours", None))
+        self.forecast_temp_6hours.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
         self.forecast_icon_9hours.setText("")
-        self.forecast_time3_12.setText(QCoreApplication.translate("MainWindow", u"+9 Hours", None))
         self.forecast_temp_9hours.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
         self.forecast_icon_12hours.setText("")
         self.forecast_temp_12hours.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
-        self.forecast_time4_12.setText(QCoreApplication.translate("MainWindow", u"+12 Hours", None))
-        self.forecast_temp_tomorrow.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
         self.forecast_icon_tomorrow.setText("")
-        self.label_tomorrow.setText(QCoreApplication.translate("MainWindow", u"Tomorrow", None))
+        self.forecast_time1_12.setText(QCoreApplication.translate("MainWindow", u"Tomorrow", None))
+        self.forecast_temp_tomorrow.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
         self.forecast_icon_after1.setText("")
         self.forecast_temp_after1.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
-        self.label1_tomorrow.setText(QCoreApplication.translate("MainWindow", u"After Tomorrow", None))
-        self.forecast_temp_after2.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
+        self.forecast_time1_13.setText(QCoreApplication.translate("MainWindow", u"Tomorrow +1", None))
         self.forecast_icon_after2.setText("")
-        self.label2_tomorrow.setText(QCoreApplication.translate("MainWindow", u"+2 Tomorrow", None))
-        self.current_weather_description.setText(QCoreApplication.translate("MainWindow", u"Current Weather Descriptions Here", None))
-        self.current_weather_icon.setText("")
+        self.forecast_temp_after2.setText(QCoreApplication.translate("MainWindow", u"Please wait..", None))
+        self.forecast_time1_14.setText(QCoreApplication.translate("MainWindow", u"Tomorrow +2", None))
+        self.temperature_label.setText(QCoreApplication.translate("MainWindow", u"27 c", None))
         self.label_51.setText("")
-        self.temperature_label.setText(QCoreApplication.translate("MainWindow", u"27 C", None))
         self.wind_speed_label.setText(QCoreApplication.translate("MainWindow", u"113 km/h", None))
-        self.label_52.setText("")
-        self.label_50.setText("")
         self.pressure_label.setText(QCoreApplication.translate("MainWindow", u"1.029 hPa", None))
         self.pressure_label_3.setText(QCoreApplication.translate("MainWindow", u"%78", None))
-        self.label_57.setText("")
-        self.label_54.setText(QCoreApplication.translate("MainWindow", u"Select Country", None))
-        self.label_53.setText(QCoreApplication.translate("MainWindow", u"Select City", None))
+        self.cities_list.setCurrentText("")
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"City Name", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Regions", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Province", None));
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Population", None));
-        self.city_name_label.setText(QCoreApplication.translate("MainWindow", u"City Name", None))
-        self.search_city.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Here \ud83d\udd0e", None))
-        self.region_label.setText(QCoreApplication.translate("MainWindow", u"Region", None))
-        self.population_label.setText(QCoreApplication.translate("MainWindow", u"Population", None))
-        self.label_21.setText(QCoreApplication.translate("MainWindow", u"Weather-Vista", None))
     # retranslateUi
 
