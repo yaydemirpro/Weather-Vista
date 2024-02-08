@@ -42,7 +42,6 @@ class WeatherVista(QMainWindow):
         self.fill_cities_into_combobox(self.country_index)
         # Change cities according to country
         self.countries_list.currentIndexChanged.connect(self.fill_cities_into_combobox)
-        print("iki fonk arası")
         self.cities_list.currentIndexChanged.connect(self.update_city_label)
         
         #search for cities from search QLineEdit
@@ -158,13 +157,6 @@ class WeatherVista(QMainWindow):
         self.get_forecast_from_api(selected_country,selected_city)
         self.get_daily_forecast_from_api(selected_country,selected_city)
         self.get_weather_from_api(selected_country,selected_city)
-
-
-
-        
-    
-        
-    
         
 
     def populate_table_widget(self, cities):
@@ -297,7 +289,7 @@ class WeatherVista(QMainWindow):
             self.forecast_icon_12hours.setPixmap(pixmap)
             
             
-            #self.insert_forecast_data(self.selected_country, city_name, forecast_data_to_db)
+            self.insert_forecast_data(country_name, city_name, forecast_data_to_db)
             
             
 
@@ -371,30 +363,15 @@ class WeatherVista(QMainWindow):
             pixmap = QPixmap()
             pixmap.loadFromData(icon_image.content)
             self.forecast_icon_after2.setPixmap(pixmap)
-            #insert_daily_forecast_data(country_name, city_name, daily_forecast_data_db)
+            self.insert_daily_forecast_data(country_name, city_name, daily_forecast_data_db)
 
         else:
             print(f"{city_name} Not Found")
 
-    def insert_forecast_data(country_name, city_name, forecast_data):
-        collection = get_db_connection()
 
-        query = {f"{country_name}.city": city_name}
-        update = {
-            "$set": {
-                f"{country_name}.$[elem].forecast": forecast_data
-            }
-        }
-        array_filters = [{"elem.city": city_name}]
-
-        try:
-            collection.update_one({}, update, array_filters=array_filters)
-
-        except PyMongoError as pe:
-            print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
 
     def get_weather_from_api(self, country_name, city_name):
-        print("burada")
+   
         complete_url = get_complete_url(city_name)    
         response = requests.get(complete_url)
         weather_data = response.json()
@@ -444,7 +421,7 @@ class WeatherVista(QMainWindow):
 
 
 
-            #self.insert_weather_data(country_name, city_name, { "temperature": temperature, "pressure": pressure, "humidity": humidity, "wind_speed": wind_speed, "weather_description": weather_description,"Icon": weather_icon})
+            self.insert_weather_data(country_name, city_name, { "temperature": temperature, "pressure": pressure, "humidity": humidity, "wind_speed": wind_speed, "weather_description": weather_description,"Icon": weather_icon})
 
         else:
             print(f"{city_name} Not Found")
@@ -466,6 +443,39 @@ class WeatherVista(QMainWindow):
 
         except PyMongoError as pe:
             print(f'Error inserting weather data for {city_name}, {country_name}: {pe}')
+
+    def insert_daily_forecast_data(self, country_name, city_name, daily_forecast_data):
+        collection = get_db_connection()
+
+        query = {f"{country_name}.city": city_name}
+        update = {
+            "$push": {
+                f"{country_name}.$[elem].forecast": daily_forecast_data
+            }
+        }
+        array_filters = [{"elem.city": city_name}]
+
+        try:
+            collection.update_one(query, update, array_filters=array_filters)
+        except PyMongoError as pe:
+            print(f'Error daily inserting forecast data for {city_name}, {country_name}: {pe}')
+
+
+    def insert_forecast_data(self, country_name, city_name, forecast_data):
+        collection = get_db_connection()
+
+        query = {f"{country_name}.city": city_name}
+        update = {
+            "$push": {
+                f"{country_name}.$[elem].forecast": forecast_data
+            }
+        }
+        array_filters = [{"elem.city": city_name}]
+
+        try:
+            collection.update_one(query, update, array_filters=array_filters)
+        except PyMongoError as pe:
+            print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
             
 if __name__ == '__main__':
     app = QApplication(sys.argv)
