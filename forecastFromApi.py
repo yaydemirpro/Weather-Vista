@@ -129,18 +129,19 @@ def insert_daily_forecast_data(country_name, city_name, daily_forecast_data):
 
     query = {f"{country_name}.city": city_name}
     update = {
-        "$set": {
+        "$push": {
             f"{country_name}.$[elem].forecast": daily_forecast_data
         }
     }
     array_filters = [{"elem.city": city_name}]
 
     try:
-
-        collection.update_one({}, update, array_filters=array_filters)
-        print(f"Forecast data for {city_name}, {country_name} inserted successfully.")
+        collection.update_one(query, update, array_filters=array_filters)
     except PyMongoError as pe:
-        print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
+        print(f'Error daily inserting forecast data for {city_name}, {country_name}: {pe}')
+
+
+
 
 
 def insert_forecast_data(country_name, city_name, forecast_data):
@@ -148,17 +149,13 @@ def insert_forecast_data(country_name, city_name, forecast_data):
 
     query = {f"{country_name}.city": city_name}
     update = {
-        "$set": {
+        "$push": {
             f"{country_name}.$[elem].forecast": forecast_data
         }
     }
     array_filters = [{"elem.city": city_name}]
 
     try:
-
-        collection.update_one({}, update, array_filters=array_filters)
-        print(f"Forecast data for {city_name}, {country_name} inserted successfully.")
+        collection.update_one(query, update, array_filters=array_filters)
     except PyMongoError as pe:
         print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
-
-
