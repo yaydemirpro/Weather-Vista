@@ -89,7 +89,7 @@ Special thanks to OpenWeatherMap for providing the weather API.
 
 ## Weather-Vista User Guide
 
-![Weather-Vista app user interface](Weather Vista UI.png)
+![Weather-Vista app user interface](Weather_Vista_UI.png)
 
 ### Getting Started
 
