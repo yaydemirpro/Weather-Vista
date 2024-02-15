@@ -2,32 +2,55 @@ import sys
 import requests
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QComboBox,QTableWidgetItem
 from PyQt5.QtWidgets import QCompleter
-from PyQt5.QtCore import QSettings,QStringListModel
+from PyQt5.QtCore import QSettings,QStringListModel, QTimer, QDateTime
 from PyQt5.QtGui import QPixmap
 from pymongo.errors import PyMongoError
+from PyQt5.QtWidgets import QMessageBox
 from PyQt5.uic import loadUi
 from db_connect import get_db_connection, get_complete_url, get_forecast_url, get_complete_url
-
 
 
 class WeatherVista(QMainWindow):
     def __init__(self):
         super(WeatherVista, self).__init__()        
-        loadUi('weatherapp.ui', self)
+        loadUi('weatherapp2.ui', self)
         self.setWindowTitle('Weather Vista')
-        
-        # Fill countries into the county_list combobox element
-        self.fill_countries_into_combobox() 
-
-        
         # Initialize settings
         self.settings = QSettings("WeatherVista", "country_city")
+
+        
+        # Load cities from database and store them in a variable
+        self.cities_data = self.load_cities_from_database()
+        self.cities = [] 
+
+        # Connect the update_clock method to the QTimer timeout signal
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_clock)
+        self.timer.start(1000)  # Timer fires every second
+      
+        self.cities_list.currentIndexChanged.connect(lambda index: self.update_city_label(index, self.cities_list.currentText()))
+        self.cities_list.currentIndexChanged.connect(self.update_weather_data)      
+        self.cities_list.currentIndexChanged.connect(self.save_last_city_country)        
+
+        # Fill countries into the county_list combobox element
+        self.fill_countries_into_combobox() 
+        self.update_city_label(0,self.cities_list.currentText())
+        # Change cities according to country
+        self.countries_list.currentIndexChanged.connect(lambda index: self.fill_cities_into_combobox(self.countries_list.itemText(index)))
+
 
         # Load last selected country and city
         last_country = self.settings.value("last_country", "")
         last_city = self.settings.value("last_city", "")
         self.country_index = 0  # Default value
-        self.selected_country = ""
+
+        
+        # Initialize selected country and city from comboboxes if they are not empty
+        if self.countries_list.count() > 0:
+            self.selected_country = self.countries_list.currentText()
+        if self.cities_list.count() > 0:
+            self.selected_city = self.cities_list.currentText()
+
         
         if last_country:
             self.country_index = self.countries_list.findText(last_country)
@@ -37,84 +60,82 @@ class WeatherVista(QMainWindow):
         if last_city:
             city_index = self.cities_list.findText(last_city)
             if city_index != -1:
+                self.selected_city = last_city
                 self.cities_list.setCurrentIndex(city_index)
         
-        self.fill_cities_into_combobox(self.country_index)
-        # Change cities according to country
-        self.countries_list.currentIndexChanged.connect(self.fill_cities_into_combobox)
-        self.cities_list.currentIndexChanged.connect(self.update_city_label)
-        
+   
         #search for cities from search QLineEdit
-        self.search_city.setPlaceholderText("Search City")
+        self.search_city.setPlaceholderText("Find your city quickly 🔍")
         self.searched_cities = []
-        self.selected_country = ""
-        self.selected_city = ""
         # Create a QCompleter and set it for the search_city QLineEdit
         self.completer = QCompleter()
         self.search_city.setCompleter(self.completer)
-
-        # Connect the completer to a custom filtering function
-        self.completer.activated.connect(self.handle_completer_activated)
         
         # Connect the textChanged signal to the search_city_with_QLineEdit method
-        self.search_city.textChanged.connect(self.search_city_with_QLineEdit)
+        self.search_city.returnPressed.connect(self.search_city_with_QLineEdit)
+        self.search_city.setPlaceholderText("")
+
+        # Placeholder metnini animasyonlu hale getirmek için timer başlatma
+        self.placeholder_timer = QTimer(self)
+        self.placeholder_timer.timeout.connect(self.update_placeholder_text)
+        self.placeholder_text = "Find your city quickly 🔍"
+        self.placeholder_index = 0
+        self.placeholder_timer.start(100)  # Her 100 milisaniyede bir timeout sinyali gönderir
+
+    def update_placeholder_text(self):
+        # Her çağrıda placeholder metnine bir sonraki harfi ekler
+        if self.placeholder_index < len(self.placeholder_text):
+            current_text = self.search_city.placeholderText()
+            self.search_city.setPlaceholderText(current_text + self.placeholder_text[self.placeholder_index])
+            self.placeholder_index += 1
+        else:
+            
+            self.placeholder_timer.stop()  # Metnin tamamı yazıldıysa timer'ı durdur
+
+
+
+    def update_clock(self):
+        # Get the current date and time
+        current_datetime = QDateTime.currentDateTime()
+        # Update the date and time labels
+        self.date_label.setText(current_datetime.toString("MMMM d, yyyy"))
+        self.time_label.setText(current_datetime.toString("hh:mm:ss"))
+        self.day_label.setText(current_datetime.toString("dddd"))
         
-        # Connect the cellClicked signal to the handle_cell_clicked method
-        self.tableWidget.cellClicked.connect(self.handle_cell_clicked)
-        
-    def handle_cell_clicked(self, row, column):
-        # Handle the cell click event
-        if column == 0:  # Assuming the city name is in the first column
-            selected_city_name = self.tableWidget.item(row, column).text()
-            # Assuming that the city_name_label should be updated
-            self.city_name_label.setText(selected_city_name)
-
-            # Find the city data for the selected city
-            selected_city_data = next((city_data for city_data in self.cities if city_data["city"] == selected_city_name), None)
-
-            if selected_city_data:
-                # Update labels with data from the selected city
-                self.city_name_label.setText(selected_city_data["city"])
-                self.province_label.setText(selected_city_data["province"])
-                self.population_label.setText(str(selected_city_data["population"]))
-
-                # Update the cities_list combobox
-                selected_country = selected_city_data["country"]
-                self.update_country_and_city_comboboxes(selected_country, selected_city_name)
-        
-    def search_city_with_QLineEdit(self, text):
-        # Şehir araması yapılır
-        self.searched_cities = []
-
+                
+    def load_cities_from_database(self):
+        cities_data = {}
         db_connection = get_db_connection()
-
-        for document in db_connection.find():
-            if "_id" not in document:
-                continue  # Skip documents without "_id" field
-
+        all_documents = db_connection.find()
+        for document in all_documents:
             for country, cities in document.items():
                 if country == "_id":
                     continue  # Skip the "_id" field
+                cities_sorted_by_population = sorted(cities, key=lambda x: x.get("population", 0), reverse=True)
+                cities_info = []
+                for city_data in cities_sorted_by_population:
+                    city_info = {
+                        "city": city_data["city"],
+                        "province": city_data.get("province", ""),
+                        "population": city_data.get("population", 0)
+                    }
+                    cities_info.append(city_info)
+                cities_data[country] = cities_info
+        return cities_data
 
-                for city_data in cities:
-                    if text.lower() in city_data["city"].lower():
-                        self.searched_cities.append({"country": country, "city": city_data["city"]})
+        
 
-
-        # Update the completer model with matching city names
-        completer_model = QStringListModel([city["city"] for city in self.searched_cities])
-        self.completer.setModel(completer_model)
-        # If there is a match, update the comboboxes
-        if self.searched_cities:
-            selected_country = self.searched_cities[0]["country"]
-            selected_city = self.searched_cities[0]["city"]
+    def search_city_with_QLineEdit(self):
+        text = self.search_city.text().lower()
+        matched_cities = []
+        for country, cities in self.cities_data.items():
+            for city in cities:
+                if text in city['city'].lower():  # Accessing the 'city' key from the dictionary
+                    matched_cities.append((country, city))
+        if matched_cities:
+            selected_country, selected_city = matched_cities[0]
             self.update_country_and_city_comboboxes(selected_country, selected_city)
-
-
-    def handle_completer_activated(self, index):
-        # Handle the completion item selection if needed
-        selected_city_name = self.completer.currentCompletion()
-
+        self.search_city.clear()
 
     def update_country_and_city_comboboxes(self, selected_country, selected_city):
         # Ülke ve şehir bilgilerini güncelle ve combobox'ları ayarla
@@ -122,94 +143,84 @@ class WeatherVista(QMainWindow):
         if country_index != -1:
             self.countries_list.setCurrentIndex(country_index)
 
-        self.fill_cities_into_combobox(country_index)
+        self.fill_cities_into_combobox(self.countries_list.currentText())
 
-        city_index = self.cities_list.findText(selected_city)
+        city_index = self.cities_list.findText(selected_city["city"])
         if city_index != -1:
             self.cities_list.setCurrentIndex(city_index)
 
-            
-                    
+
+ 
+    def save_last_city_country(self):
+        self.settings.setValue("last_country", self.countries_list.currentText())
+        self.settings.setValue("last_city", self.cities_list.currentText())   
+        
+        
     def fill_countries_into_combobox(self):
-        db_connection = get_db_connection()
-        all_documents = db_connection.find()
-
-        countries = [country for document in all_documents for country in document.keys() if country != '_id']
+        self.cities_list.currentIndexChanged.disconnect(self.save_last_city_country)           #********************************
         self.countries_list.clear()
-        self.countries_list.addItems(countries)
-        
 
+        countries = [(index, country) for index, country in enumerate(self.cities_data.keys())]
+        for index, country in countries:
+            self.countries_list.addItem(country, index)
 
-    def fill_cities_into_combobox(self, index):
-        selected_country = self.countries_list.itemText(index)
+        # Otomatik olarak son seçili ülkeyi seç
+        last_country = self.settings.value("last_country", "")
+        if last_country:
+            country_index = self.countries_list.findText(last_country)
+            if country_index != -1:
+                self.countries_list.setCurrentIndex(country_index)
+                self.fill_cities_into_combobox(last_country)
+        self.cities_list.currentIndexChanged.connect(self.save_last_city_country)           #********************************
+
+    def fill_cities_into_combobox(self, selected_country):
+        cities_in_country = self.cities_data.get(selected_country, [])
+        self.cities_list.currentIndexChanged.disconnect(self.update_weather_data)           #********************************
+        self.cities_list.clear()
         
-        db_connection = get_db_connection() 
-        document = db_connection.find_one({selected_country: {"$exists": True}})     
-        if document:
-            # Check if the selected_country key exists and if the values are a list
-            if isinstance(document[selected_country], list):
-                # Check if each city dictionary has the 'population' key
-                for city_data in document[selected_country]:
-                    if 'population' not in city_data:
-                        print("Missing 'population' key in city data:", city_data)
-                        # Handle the case where 'population' key is missing, possibly skip this city or set a default population
-                        # For now, let's assume default population as 0
-                        city_data['population'] = 0
+        city_names = [city["city"] for city in cities_in_country]
+        self.cities_list.addItems(city_names)
+        self.cities_list.currentIndexChanged.connect(self.update_weather_data)              #********************************
+
+        # Otomatik olarak son seçili şehri seç
+        last_city = self.settings.value("last_city", "")
+        if last_city in city_names:
+            city_index = city_names.index(last_city)
+            self.cities_list.setCurrentIndex(city_index)
+              
+    def update_city_label(self, index, selected_city_name):
+        if selected_city_name:
+            # Fetch city information from self.cities_data
+            city_info = None
+            for country, cities in self.cities_data.items():
+                for city in cities:
+                    if city["city"] == selected_city_name:
+                        city_info = city
+                        break
+                if city_info:
+                    break
+
+            if city_info:
+                # Update labels with data from the selected city
+                self.city_name_label.setText(city_info["city"])
+                self.province_label.setText(city_info["province"])
+                self.population_label.setText(str(city_info["population"]))
+                self.selected_country = self.countries_list.currentText()
             else:
-                print("Cities data is not in the expected list format.")
-                return  # Exit the method if cities data is not in the expected format
-            
-            # Sort the cities based on population
-            self.cities = sorted(document[selected_country], key=lambda x: x["population"], reverse=True)
-            self.cities_list.clear()
-            self.cities_list.addItems([entry["city"] for entry in self.cities])
-            selected_city = self.cities_list.currentText()
+                print(f"City data not found for {selected_city_name}")
         else:
-            print("Selected country has no cities")
+            print("No city selected")
+
+    def update_weather_data(self):
+        selected_country = self.countries_list.currentText()
+        selected_city = self.cities_list.currentText()
         
-        self.populate_table_widget(self.cities)
+        # Fetch and update forecast and weather data for the selected city
         self.get_forecast_from_api(selected_country, selected_city)
         self.get_daily_forecast_from_api(selected_country, selected_city)
         self.get_weather_from_api(selected_country, selected_city)
-
-        
-
-    def populate_table_widget(self, cities):
-        self.tableWidget.setRowCount(len(cities))
-        self.tableWidget.setColumnCount(3)
-        headers = ["City Name", "Province", "Population"]
-        self.tableWidget.setHorizontalHeaderLabels(headers)
-
-        for row, city_data in enumerate(cities):
-            if isinstance(city_data, dict):
-                city_name = city_data.get("city", "")
-                province = city_data.get("province", "")
-                population = str(city_data.get("population", ""))
-
-                self.tableWidget.setItem(row, 0, QTableWidgetItem(city_name))
-                self.tableWidget.setItem(row, 1, QTableWidgetItem(province))
-                self.tableWidget.setItem(row, 2, QTableWidgetItem(population))
             
-    def update_city_label(self, index):
-        selected_city = self.cities_list.itemText(index)
-
-        # Find the city data for the selected city
-        selected_city_data = next((city_data for city_data in self.cities if city_data["city"] == selected_city), None)
-
-        if selected_city_data:
-            # Update labels with data from the selected city
-            self.city_name_label.setText(selected_city_data["city"])
-            self.province_label.setText(selected_city_data["province"])
-            self.population_label.setText(str(selected_city_data["population"]))
-            selected_country = self.countries_list.currentText()
-            self.get_forecast_from_api(selected_country,selected_city)
-            self.get_daily_forecast_from_api(selected_country,selected_city)
-            self.get_weather_from_api(selected_country,selected_city)
             
-        else:
-            print(f"Data not found for {selected_city}")
-        
-        
     def get_forecast_from_api(self, country_name, city_name):
         
         forecast_url = get_forecast_url(city_name)    
@@ -301,18 +312,13 @@ class WeatherVista(QMainWindow):
             icon_image = requests.get(icon_url)
             pixmap = QPixmap()
             pixmap.loadFromData(icon_image.content)
-            self.forecast_icon_12hours.setPixmap(pixmap)
-            
-            
-            self.insert_forecast_data(country_name, city_name, forecast_data_to_db)
-            
+            self.forecast_icon_12hours.setPixmap(pixmap)            
             
 
         else:
             print(f"{city_name} Not Found")
             #print(forecast_data)
         
-        self.get_daily_forecast_from_api(country_name, city_name)
         
     def get_daily_forecast_from_api(self,country_name, city_name ):
         forecast_url = get_forecast_url(city_name)    
@@ -378,119 +384,59 @@ class WeatherVista(QMainWindow):
             pixmap = QPixmap()
             pixmap.loadFromData(icon_image.content)
             self.forecast_icon_after2.setPixmap(pixmap)
-            self.insert_daily_forecast_data(country_name, city_name, daily_forecast_data_db)
 
         else:
             print(f"{city_name} Not Found")
-
 
 
     def get_weather_from_api(self, country_name, city_name):
-   
         complete_url = get_complete_url(city_name)    
         response = requests.get(complete_url)
         weather_data = response.json()
-
-        if weather_data["cod"] != "404":
-            # Extracting relevant information from the JSON response
-            main_info = weather_data["main"]
-            
-            # Main information
-            temperature = main_info["temp"]
-            pressure = main_info["pressure"]
-            humidity = main_info["humidity"]
-            
-            # Wind
-            wind_info = weather_data["wind"]
-            wind_speed = wind_info["speed"]
-
-            # Description
-            weather_info = weather_data["weather"]
-            weather_description = weather_info[0]["description"]
-            
-            #icon
-            weather_info = weather_data ["weather"]
-            weather_icon = weather_info[0]["icon"]
-            
-
-            # Displaying the information
-            print(f"Weather in {city_name}:")
-            #print(f"Temperature (in Celsius) = {int(temperature)} °C")
-            self.temperature_label.setText(str(int(temperature))+"°c")
-            #print(f"Atmospheric pressure (in hPa) = {pressure} hPa")
-            self.pressure_label.setText(str(pressure)+"hPa")
-            #print(f"Humidity (in percentage) = {humidity}%")
-            self.pressure_label_3.setText(str(humidity)+"%")
-            #print(f"Wind Speed = {wind_speed} m/s")
-            self.wind_speed_label.setText(str(wind_speed)+"m/s")
-            
-            
-            #print(f"Weather description = {weather_description}")
-            self.current_weather_description.setText((weather_description))
-            #print(f"Icon:{weather_icon}")
-            icon_url = f"http://openweathermap.org/img/w/{weather_icon}.png"
-            icon_image = requests.get(icon_url)
-            pixmap = QPixmap()
-            pixmap.loadFromData(icon_image.content)
-            self.current_weather_icon.setPixmap(pixmap)
-
-
-
-            self.insert_weather_data(country_name, city_name, { "temperature": temperature, "pressure": pressure, "humidity": humidity, "wind_speed": wind_speed, "weather_description": weather_description,"Icon": weather_icon})
-
-        else:
-            print(f"{city_name} Not Found")
-
-
-    def insert_weather_data(self, country_name, city_name, weather_data):
-        collection = get_db_connection()
-
-        query = {f"{country_name}.city": city_name}
-        update = {
-            "$set": {
-                f"{country_name}.$[elem].forecast": weather_data
-            }
-        }
-        array_filters = [{"elem.city": city_name}]
-
         try:
-            collection.update_one({}, update, array_filters=array_filters)
+            if weather_data["cod"] != "200":
+                # Extracting relevant information from the JSON response
+                main_info = weather_data["main"]
+                
+                # Main information
+                temperature = main_info["temp"]
+                pressure = main_info["pressure"]
+                humidity = main_info["humidity"]
+                
+                # Wind
+                wind_info = weather_data.get("wind", {})  # Use .get() method to safely access wind_info
+                wind_speed = wind_info.get("speed", "N/A")  # Use .get() method to safely access wind_speed
 
-        except PyMongoError as pe:
-            print(f'Error inserting weather data for {city_name}, {country_name}: {pe}')
+                # Description
+                weather_info = weather_data["weather"]
+                weather_description = weather_info[0]["description"]
+                
+                #icon
+                weather_info = weather_data ["weather"]
+                weather_icon = weather_info[0]["icon"]
+                
+                # Displaying the information
+                self.temperature_label.setText(str(int(temperature))+"°c")
+                self.pressure_label.setText(str(pressure)+"hPa")
+                self.pressure_label_3.setText(str(humidity)+"%")
+                self.wind_speed_label.setText(str(wind_speed)+"m/s")
+                self.current_weather_description.setText((weather_description))
+                
+                icon_url = f"http://openweathermap.org/img/w/{weather_icon}.png"
+                icon_image = requests.get(icon_url)
+                pixmap = QPixmap()
+                pixmap.loadFromData(icon_image.content)
+                self.current_weather_icon.setPixmap(pixmap)
 
-    def insert_daily_forecast_data(self, country_name, city_name, daily_forecast_data):
-        collection = get_db_connection()
+            else:
+                print(f"{city_name} Not Found")
 
-        query = {f"{country_name}.city": city_name}
-        update = {
-            "$push": {
-                f"{country_name}.$[elem].forecast": daily_forecast_data
-            }
-        }
-        array_filters = [{"elem.city": city_name}]
-
-        try:
-            collection.update_one(query, update, array_filters=array_filters)
-        except PyMongoError as pe:
-            print(f'Error daily inserting forecast data for {city_name}, {country_name}: {pe}')
+        except KeyError as e:
+            error_message = f"An error occurred: {e}"
+            QMessageBox.warning(self, "Error", error_message)
 
 
-    def insert_forecast_data(self, country_name, city_name, forecast_data):
-        collection = get_db_connection()
 
-        query = {f"{country_name}.city": city_name}
-        update = {
-            "$push": {
-                f"{country_name}.$[elem].forecast": forecast_data
-            }
-        }
-        array_filters = [{"elem.city": city_name}]
-
-        try:
-            collection.update_one(query, update, array_filters=array_filters)
-        except PyMongoError as pe:
-            print(f'Error inserting forecast data for {city_name}, {country_name}: {pe}')
             
 if __name__ == '__main__':
     app = QApplication(sys.argv)

@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="backgrounds images">
+    <file>nicubunu_Weather_Symbols_Sun.svg</file>
+    <file>night.png</file>
+    <file>after_noon.png</file>
+  </qresource>
+</RCC>

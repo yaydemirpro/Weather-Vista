@@ -75,7 +75,7 @@ Weather-Vista welcomes contributions! To get started:
 ## API and Database Operations
 
 - The application fetches weather data using the OpenWeatherMap API.
-- MongoDB is used as the database. City data for each country is stored in the database, and current weather data is retrieved and displayed from there.
+- MongoDB is used as the database. City data for each country is stored in the database.
 
 ## License
 
@@ -84,3 +84,50 @@ This project is licensed under the Creative Commons Zero v1.0 Universal.
 ## Acknowledgements
 
 Special thanks to OpenWeatherMap for providing the weather API.
+
+
+
+## Weather-Vista User Guide
+
+![Weather-Vista app user interface](Weather-Vista.png)
+
+### Getting Started
+
+When you launch the application, weather data is loaded, and the main screen is displayed.
+
+### Main Screen
+
+**Country and City Selection:**
+- Use the dropdown menus to select a country and city.
+- When you change the country, the list of cities for that country is automatically loaded.
+- The selected city's weather information will be displayed in the main area of the screen.
+
+**Real-Time Weather Information:**
+- View real-time weather information, including temperature, pressure, humidity, wind speed, and weather description.
+
+**Daily and Hourly Forecast:**
+- Access daily and hourly weather forecasts for the selected city.
+- Daily forecasts cover the next three days, while hourly forecasts cover 3, 6, 9, and 12-hour intervals.
+
+**City Search:**
+- Use the "Find your city quickly 🔍" search box to quickly find a city.
+- Even if you don't enter the full city name, the search will still work. For example, typing "erda" will display "Amsterdam," and typing "han" will display "Hanover."
+
+**Current Date and Time:**
+- The top right corner of the screen displays the current date and time.
+
+### Features
+
+**Saved User Preferences:**
+- The application remembers the last selected country and city, automatically loading them on the next startup.
+
+**Animated Placeholder:**
+- The search box's placeholder text is animated to provide search hints.
+
+**Error Notifications:**
+- If there is an error fetching or displaying weather data, an error message will be shown.
+
+**Clean and User-Friendly Interface:**
+- The application's interface is designed to provide easy access to weather information.
+
+This guide covers the basic features of Weather-Vista and is designed to help users effectively use the application. Explore further to discover more features and enjoy using Weather-Vista!
