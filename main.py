@@ -102,6 +102,15 @@ class WeatherVista(QMainWindow):
         self.time_label.setText(current_datetime.toString("hh:mm:ss"))
         self.day_label.setText(current_datetime.toString("dddd"))
         
+        # Determine tomorrow, the day after tomorrow, and the day after that
+        tomorrow = current_datetime.addDays(1).toString("dddd")
+        day_after_tomorrow = current_datetime.addDays(2).toString("dddd")
+        day_after_day_after_tomorrow = current_datetime.addDays(3).toString("dddd")
+
+        # Update the forecast labels
+        self.forecast_time1_12.setText(tomorrow)
+        self.forecast_time1_13.setText(day_after_tomorrow)
+        self.forecast_time1_14.setText(day_after_day_after_tomorrow)        
                 
     def load_cities_from_database(self):
         cities_data = {}
