@@ -51,8 +51,6 @@ Weather-Vista welcomes contributions! To get started:
    cd Weather-Vista
 
 2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
 
 3. Configure the database connection:
    - MongoDB is used as the database. Create a MongoDB database account and update the necessary connection details in the `db_connect.py` file.
